@@ -1,23 +1,20 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <ul>
-      <li v-for="word in words" :key="word.text">
-        <WordSquare :word="word" />
-      </li>
-    </ul>
+    <WordList :words="this.shuffledWords" />
     <SubmitButton @submit="handleSubmission" />
   </div>
 </template>
 
 <script>
-import WordSquare from "@/components/WordSquare";
+import WordList from "@/components/WordList";
 import SubmitButton from "@/components/SubmitButton";
 import sourceData from "@/data.json";
+import _ from "lodash";
 
 export default {
   name: "Board",
-  components: { WordSquare, SubmitButton },
+  components: { WordList, SubmitButton },
   data() {
     return {
       msg: "Welcome to Connections",
@@ -27,7 +24,28 @@ export default {
   },
   methods: {
     handleSubmission() {
-      console.log("submitted");
+      const selectedWords = this.words.filter((w) => w.selected);
+      if (selectedWords.length !== 4) {
+        alert("4 words only can be submitted");
+      } else {
+        const correctGuess =
+          _.uniqBy(selectedWords, (w) => w.category).length === 1;
+        if (correctGuess) {
+          this.$store.dispatch("handleCorrectGuess", {
+            correctWords: selectedWords,
+          });
+          alert("correct guess!");
+        } else {
+          alert("incorrect");
+        }
+      }
+      // check only 4 words submitted
+      // prevent submission
+    },
+  },
+  computed: {
+    shuffledWords() {
+      return _.shuffle(this.words);
     },
   },
 };
@@ -43,11 +61,8 @@ h2 {
 ul {
   list-style-type: none;
   padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 a {

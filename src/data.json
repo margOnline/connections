@@ -3,82 +3,114 @@
     {
       "text": "Goodness",
       "category": 1,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Mercy",
       "category": 1,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Lord",
       "category": 1,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Heavens",
       "category": 1,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Future",
       "category": 2,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Perfect",
       "category": 2,
-      "state": "unselected"
+      "selected": false,
+      "solved": true,
+      "correct": false
     },
     {
       "text": "Present",
       "category": 2,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Past",
       "category": 2,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Cough",
       "category": 3,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Simple",
       "category": 3,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Maple",
       "category": 3,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Corn",
       "category": 3,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Lady",
       "category": 4,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Drummer",
       "category": 4,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Ring",
       "category": 4,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     },
     {
       "text": "Swan",
       "category": 4,
-      "state": "unselected"
+      "selected": false,
+      "solved": false,
+      "correct": false
     }
   ],
   "categories": [
