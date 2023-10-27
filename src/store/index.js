@@ -1,34 +1,41 @@
 import { createStore } from "vuex";
-import sourceData from "@/data";
+import sourceData from "@/data.json";
 
 export default createStore({
   state: {
-    sourceData: sourceData,
+    words: [],
+    categories: [],
     numOfGuessesRemaining: 4,
   },
   actions: {
+    initializeGame() {
+      this.commit("setCategories", { categories: sourceData.categories });
+      this.commit("setWords", { words: sourceData.words });
+    },
     updateWordState({ commit, state }, { text }) {
-      const targetWord = state.sourceData.words.find((w) => w.text === text);
+      const targetWord = state.words.find((w) => w.text === text);
       commit("setSelected", { word: targetWord });
     },
-    handleCorrectGuess({ commit }, { correctWords }) {
-      correctWords.forEach((word) => {
-        commit("setSelected", { word });
-        commit("setCorrect", { word });
-      });
+    async handleCorrectGuess({ commit }, { categoryId }) {
+      const category = await this.fetchCategory({ id: categoryId });
+      commit("setCorrectCategory", { category });
     },
     async fetchCategory({ state }, { id }) {
-      const category = await state.sourceData.categories.find((c) => c.id === id);
-      return category
+      return state.categories.find((c) => c.id === id);
     },
   },
   mutations: {
+    setCategories(state, { categories }) {
+      state.categories = categories;
+    },
+    setWords(state, { words }) {
+      state.words = words;
+    },
     setSelected(state, { word }) {
       word.selected = !word.selected;
     },
-    setCorrect(state, { word }) {
-      word.correct = !word.correct;
-      word.solved = true;
+    setCorrectCategory(state, { category }) {
+      category.solved = true;
     },
   },
   modules: {},
@@ -36,8 +43,11 @@ export default createStore({
     numOfGuesses: (state) => {
       return state.numOfGuessesRemaining;
     },
-    category: (state) => {
-      return state.numOfGuessesRemaining;
+    categories({ state }) {
+      return state.categories;
+    },
+    words({ state }) {
+      return state.words;
     },
   },
 });
