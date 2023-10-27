@@ -1,7 +1,12 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <WordList :words="this.shuffledWords" />
+    <SolvedCategory
+      v-for="category in solvedCategories()"
+      :key="category.id"
+      :category="category"
+    >
+    </SolvedCategory>
+    <WordList :words="this.unsolvedWords" />
     <SubmitButton @submit="handleSubmission" />
   </div>
 </template>
@@ -9,18 +14,15 @@
 <script>
 import WordList from "@/components/WordList";
 import SubmitButton from "@/components/SubmitButton";
-import sourceData from "@/data.json";
+import SolvedCategory from "@/components/SolvedCategory";
 import _ from "lodash";
 
 export default {
   name: "Board",
-  components: { WordList, SubmitButton },
-  data() {
-    return {
-      msg: "Welcome to Connections",
-      words: sourceData.words,
-      categories: sourceData.categories,
-    };
+  components: { WordList, SubmitButton, SolvedCategory },
+  props: {
+    words: { type: Array, required: true },
+    categories: { type: Array, required: true },
   },
   methods: {
     handleSubmission() {
@@ -29,8 +31,9 @@ export default {
         alert("4 words only can be submitted");
       } else {
         if (this.isGuessCorrect(selectedWords)) {
+          const correctCategoryId = selectedWords[0].categoryId;
           this.$store.dispatch("handleCorrectGuess", {
-            correctWords: selectedWords,
+            categoryId: correctCategoryId,
           });
           this.updateKey();
         } else {
@@ -46,10 +49,18 @@ export default {
     updateKey() {
       return Math.random();
     },
+    solvedCategories() {
+      const categories = this.$store.state.categories;
+      return categories.filter((c) => c.solved);
+    },
+    categoryWords(categoryId) {
+      return this.words.filter((w) => w.categoryId === categoryId);
+    },
   },
   computed: {
-    shuffledWords() {
-      return _.shuffle(this.words);
+    unsolvedWords() {
+      const words = this.$store.state.words.filter((word) => !word.correct);
+      return _.shuffle(words);
     },
   },
 };

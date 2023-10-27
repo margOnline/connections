@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>Ready to play connections!</h1>
-    <Board />
+    <Board :categories="categories" :words="words" />
   </div>
 </template>
 
@@ -11,6 +11,14 @@ import Board from "@/components/Board.vue";
 export default {
   components: {
     Board,
+  },
+  computed: {
+    words() {
+      return this.$store.state.words;
+    },
+    categories() {
+      return this.$store.state.categories;
+    },
   },
 };
 </script>

@@ -8,16 +8,23 @@ export default createStore({
     numOfGuessesRemaining: 4,
   },
   actions: {
-    initializeGame() {
-      this.commit("setCategories", { categories: sourceData.categories });
-      this.commit("setWords", { words: sourceData.words });
+    initializeGame({ commit }) {
+      commit("setCategories", { categories: sourceData.categories });
+      commit("setWords", { words: sourceData.words });
     },
     updateWordState({ commit, state }, { text }) {
       const targetWord = state.words.find((w) => w.text === text);
-      commit("setSelected", { word: targetWord });
+      commit("toggleWordSelected", { word: targetWord });
     },
-    async handleCorrectGuess({ commit }, { categoryId }) {
-      const category = await this.fetchCategory({ id: categoryId });
+    async handleCorrectGuess({ commit, state }, { categoryId }) {
+      const category = state.categories.find((c) => c.id === categoryId);
+      const solvedWords = state.words.filter(
+        (word) => word.categoryId === categoryId
+      );
+      solvedWords.forEach((word) => {
+        commit("setWordSolved", { word });
+        commit("toggleWordSelected", { word });
+      });
       commit("setCorrectCategory", { category });
     },
     async fetchCategory({ state }, { id }) {
@@ -31,8 +38,11 @@ export default createStore({
     setWords(state, { words }) {
       state.words = words;
     },
-    setSelected(state, { word }) {
+    toggleWordSelected(state, { word }) {
       word.selected = !word.selected;
+    },
+    setWordSolved(state, { word }) {
+      word.correct = true;
     },
     setCorrectCategory(state, { category }) {
       category.solved = true;
@@ -42,12 +52,6 @@ export default createStore({
   getters: {
     numOfGuesses: (state) => {
       return state.numOfGuessesRemaining;
-    },
-    categories({ state }) {
-      return state.categories;
-    },
-    words({ state }) {
-      return state.words;
     },
   },
 });

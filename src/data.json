@@ -1,134 +1,126 @@
 {
   "words": [
     {
-      "text": "Goodness",
-      "category": 1,
+      "text": "goodness",
+      "categoryId": 1,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Mercy",
-      "category": 1,
+      "text": "mercy",
+      "categoryId": 1,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Lord",
-      "category": 1,
+      "text": "lord",
+      "categoryId": 1,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Heavens",
-      "category": 1,
+      "text": "heavens",
+      "categoryId": 1,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Future",
-      "category": 2,
+      "text": "future",
+      "categoryId": 2,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Perfect",
-      "category": 2,
+      "text": "perfect",
+      "categoryId": 2,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Present",
-      "category": 2,
+      "text": "present",
+      "categoryId": 2,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Past",
-      "category": 2,
+      "text": "past",
+      "categoryId": 2,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Cough",
-      "category": 3,
+      "text": "cough",
+      "categoryId": 3,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Simple",
-      "category": 3,
+      "text": "simple",
+      "categoryId": 3,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Maple",
-      "category": 3,
+      "text": "maple",
+      "categoryId": 3,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Corn",
-      "category": 3,
+      "text": "corn",
+      "categoryId": 3,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Lady",
-      "category": 4,
+      "text": "lady",
+      "categoryId": 4,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Drummer",
-      "category": 4,
+      "text": "drummer",
+      "categoryId": 4,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
       "text": "Ring",
-      "category": 4,
+      "categoryId": 4,
       "selected": false,
-      "solved": false,
       "correct": false
     },
     {
-      "text": "Swan",
-      "category": 4,
+      "text": "swan",
+      "categoryId": 4,
       "selected": false,
-      "solved": false,
       "correct": false
     }
   ],
   "categories": [
     {
-      "level": 1,
-      "name": "Gracious Me!"
+      "id": 1,
+      "level": "Easy",
+      "name": "Gracious Me!",
+      "solved": false
     },
     {
-      "level": 2,
-      "name": "Grammar tense"
+      "id": 2,
+      "level": "Moderate",
+      "name": "Grammar tense",
+      "solved": false
     },
     {
-      "level": 3,
-      "name": "__Syrup"
+      "id": 3,
+      "level": "Challenging",
+      "name": "__Syrup",
+      "solved": false
     },
     {
-      "level": 4,
-      "name": "12 Days of Christmas"
+      "id": 4,
+      "level": "Hard",
+      "name": "12 Days of Christmas",
+      "solved": false
     }
   ]
 }
