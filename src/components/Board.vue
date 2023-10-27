@@ -28,19 +28,23 @@ export default {
       if (selectedWords.length !== 4) {
         alert("4 words only can be submitted");
       } else {
-        const correctGuess =
-          _.uniqBy(selectedWords, (w) => w.category).length === 1;
-        if (correctGuess) {
+        if (this.isGuessCorrect(selectedWords)) {
           this.$store.dispatch("handleCorrectGuess", {
             correctWords: selectedWords,
           });
-          alert("correct guess!");
+          this.updateKey();
         } else {
           alert("incorrect");
         }
       }
       // check only 4 words submitted
       // prevent submission
+    },
+    isGuessCorrect(words) {
+      return _.uniqBy(words, (w) => w.category).length === 1;
+    },
+    updateKey() {
+      return Math.random();
     },
   },
   computed: {
@@ -51,11 +55,13 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1,
 h2 {
   font-weight: normal;
+}
+a {
+  color: #42b983;
 }
 
 ul {
@@ -63,9 +69,5 @@ ul {
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-a {
-  color: #42b983;
 }
 </style>

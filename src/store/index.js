@@ -17,6 +17,10 @@ export default createStore({
         commit("setCorrect", { word });
       });
     },
+    async fetchCategory({ state }, { id }) {
+      const category = await state.sourceData.categories.find((c) => c.id === id);
+      return category
+    },
   },
   mutations: {
     setSelected(state, { word }) {
@@ -30,6 +34,9 @@ export default createStore({
   modules: {},
   getters: {
     numOfGuesses: (state) => {
+      return state.numOfGuessesRemaining;
+    },
+    category: (state) => {
       return state.numOfGuessesRemaining;
     },
   },
