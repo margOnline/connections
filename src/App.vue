@@ -1,27 +1,11 @@
 <template>
-  <Board msg="Welcome to Your Vue.js App" />
+  <div class="container">
+    <router-view :key="$route.fullPath" />
+  </div>
 </template>
 
 <script>
-import Board from "./components/Board.vue";
-
 export default {
   name: "App",
-  components: {
-    Board,
-  },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  max-width: 800px;
-  margin: auto;
-}
-</style>
