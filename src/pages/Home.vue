@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <h1>Ready to play connections!</h1>
     <Board :categories="categories" :words="words" />
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="banner">
-      <h3>{{ message }}!</h3>
+      <h1>{{ message }}!</h1>
     </div>
   </div>
 </template>
@@ -14,7 +14,8 @@ export default {
       messages: {
         0: "Better luck next time",
         1: "Phew",
-        2: "Well done",
+        2: "Not bad",
+        3: "Well done",
         4: "Perfect",
       },
       numOfGuessesRemaining: { type: Number },

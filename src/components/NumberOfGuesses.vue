@@ -1,12 +1,11 @@
 <template>
   <div class="container">
-    <div class="filled circle"></div>
-    <div class="filled circle"></div>
-    <div class="unfilled circle"></div>
-    <div class="unfilled circle"></div>
-  </div>
-  <div>
-    <p>Number of guesses: {{ numOfGuesses() }}</p>
+    <div
+      v-for="n in numOfGuessesRemaining()"
+      :key="n"
+      class="filled circle"
+    ></div>
+    <div v-for="n in numOfGuesses()" :key="n" class="unfilled circle"></div>
   </div>
 </template>
 
@@ -14,8 +13,11 @@
 export default {
   name: "NumberOfGuesses",
   methods: {
-    numOfGuesses() {
+    numOfGuessesRemaining() {
       return this.$store.state.numOfGuessesRemaining;
+    },
+    numOfGuesses() {
+      return 4 - this.$store.state.numOfGuessesRemaining;
     },
   },
 };
