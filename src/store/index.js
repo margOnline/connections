@@ -28,14 +28,12 @@ export default createStore({
       commit("setCorrectCategory", { category });
     },
     handleIncorrectGuess({ commit }, { words }) {
+      commit("reduceNumOfGuessesRemaining");
       words.forEach((word) => commit("toggleWordSelected", { word }));
     },
     async fetchCategory({ state }, { id }) {
       return state.categories.find((c) => c.id === id);
     },
-    reduceGuessesRemaining({ commit }) {
-      commit("reduceNumOfGuessesRemaining");
-    }
   },
   mutations: {
     setCategories(state, { categories }) {
