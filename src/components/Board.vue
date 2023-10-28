@@ -75,7 +75,10 @@ export default {
       return _.shuffle(words);
     },
     gameOver() {
-      return this.$store.state.numOfGuessesRemaining === 0;
+      return (
+        this.$store.state.numOfGuessesRemaining === 0 ||
+        this.$store.state.categories.every((c) => c.solved)
+      );
     },
   },
 };
