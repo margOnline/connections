@@ -14,10 +14,12 @@ export default {
 </script>
 <style scoped>
 .btn {
-  border: none;
-  background-color: rgb(173, 173, 233);
-  border-radius: 5px;
-  padding: 8px;
+  font-size: 16px;
+  margin-top: 15px;
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: white;
+  padding: 8px 16px;
   color: rgb(67, 69, 67);
 }
 </style>

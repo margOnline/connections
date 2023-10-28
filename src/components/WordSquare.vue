@@ -25,7 +25,7 @@ export default {
 <style scoped>
 .word {
   display: inline-block;
-  font-size: 1.5vw;
+  font-size: 2.5vw;
   height: 75px;
   width: 75px;
   background-color: rgba(238, 238, 238, 0.863);
@@ -33,6 +33,7 @@ export default {
   text-align: center;
   border: 1px solid rgb(156, 152, 153);
   border-radius: 8px;
+  line-height: 75px;
 }
 .word a {
   color: black;
