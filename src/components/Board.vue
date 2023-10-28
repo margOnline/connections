@@ -8,7 +8,7 @@
     >
     </SolvedCategory>
     <WordList :words="this.unsolvedWords" />
-    <SubmitButton @submit="handleSubmission" />
+    <SubmitButton v-if="!gameOver" @submit="handleSubmission" />
     <NumberOfGuesses />
   </div>
 </template>

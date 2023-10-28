@@ -1,8 +1,7 @@
 <template>
   <div class="container">
     <div class="banner">
-      <h3>{{ message }}</h3>
-      <p>{{ categoryWords }}</p>
+      <h3>{{ message }}!</h3>
     </div>
   </div>
 </template>
@@ -10,9 +9,6 @@
 <script>
 export default {
   name: "GameMessage",
-  props: {
-    words: { type: Array, default: () => [] },
-  },
   data() {
     return {
       messages: {
@@ -21,19 +17,16 @@ export default {
         2: "Well done",
         4: "Perfect",
       },
-      numOfGuessesRemaining: { type: Number }
+      numOfGuessesRemaining: { type: Number },
     };
   },
   computed: {
     message() {
-      const words = this.$store.state.words
-        .filter((w) => w.categoryId === this.category.id)
-        .map((w) => w.text);
-      return words.join(", ");
+      return this.messages[this.numOfGuessesRemaining];
     },
   },
   created() {
-    this.numOfGuessesRemaining = this.$tore.state.numOfGuessesRemaining;
+    this.numOfGuessesRemaining = this.$store.state.numOfGuessesRemaining;
   },
 };
 </script>
@@ -47,17 +40,5 @@ export default {
 .banner {
   padding: 10px;
   border-radius: 7px;
-}
-.easy {
-  background-color: rgb(248, 246, 103);
-}
-.moderate {
-  background-color: rgb(88, 230, 121);
-}
-.challenging {
-  background-color: rgb(183, 135, 245);
-}
-.hard {
-  background-color: rgb(150, 150, 244);
 }
 </style>
