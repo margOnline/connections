@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <GameOverMessage v-if="gameOver"></GameOverMessage>
     <SolvedCategory
       v-for="category in solvedCategories()"
       :key="category.id"
@@ -8,6 +9,7 @@
     </SolvedCategory>
     <WordList :words="this.unsolvedWords" />
     <SubmitButton @submit="handleSubmission" />
+    <NumberOfGuesses />
   </div>
 </template>
 
@@ -15,36 +17,47 @@
 import WordList from "@/components/WordList";
 import SubmitButton from "@/components/SubmitButton";
 import SolvedCategory from "@/components/SolvedCategory";
+import GameOverMessage from "@/components/GameOverMessage";
+import NumberOfGuesses from "@/components/NumberOfGuesses";
 import _ from "lodash";
 
 export default {
   name: "Board",
-  components: { WordList, SubmitButton, SolvedCategory },
+  components: {
+    WordList,
+    SubmitButton,
+    SolvedCategory,
+    GameOverMessage,
+    NumberOfGuesses,
+  },
   props: {
     words: { type: Array, required: true },
     categories: { type: Array, required: true },
   },
   methods: {
-    handleSubmission() {
-      const selectedWords = this.words.filter((w) => w.selected);
+    async handleSubmission() {
+      const selectedWords = this.$store.state.words.filter((w) => w.selected);
       if (selectedWords.length !== 4) {
-        alert("4 words only can be submitted");
+        alert("select 4 and only 4 words");
       } else {
+        this.$store.dispatch("reduceGuessesRemaining");
         if (this.isGuessCorrect(selectedWords)) {
           const correctCategoryId = selectedWords[0].categoryId;
-          this.$store.dispatch("handleCorrectGuess", {
+          await this.$store.dispatch("handleCorrectGuess", {
             categoryId: correctCategoryId,
           });
           this.updateKey();
         } else {
-          alert("incorrect");
+          this.$store.dispatch("handleIncorrectGuess", {
+            words: selectedWords,
+          });
         }
       }
       // check only 4 words submitted
       // prevent submission
     },
     isGuessCorrect(words) {
-      return _.uniqBy(words, (w) => w.category).length === 1;
+      return _.uniqBy(words, (w) => w.categoryId).length === 1;
     },
     updateKey() {
       return Math.random();
@@ -61,6 +74,9 @@ export default {
     unsolvedWords() {
       const words = this.$store.state.words.filter((word) => !word.correct);
       return _.shuffle(words);
+    },
+    gameOver() {
+      return this.$store.state.numOfGuessesRemaining === 0;
     },
   },
 };

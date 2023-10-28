@@ -27,9 +27,15 @@ export default createStore({
       });
       commit("setCorrectCategory", { category });
     },
+    handleIncorrectGuess({ commit }, { words }) {
+      words.forEach((word) => commit("toggleWordSelected", { word }));
+    },
     async fetchCategory({ state }, { id }) {
       return state.categories.find((c) => c.id === id);
     },
+    reduceGuessesRemaining({ commit }) {
+      commit("reduceNumOfGuessesRemaining");
+    }
   },
   mutations: {
     setCategories(state, { categories }) {
@@ -46,6 +52,9 @@ export default createStore({
     },
     setCorrectCategory(state, { category }) {
       category.solved = true;
+    },
+    reduceNumOfGuessesRemaining(state) {
+      state.numOfGuessesRemaining -= 1;
     },
   },
   modules: {},
