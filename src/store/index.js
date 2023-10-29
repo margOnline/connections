@@ -6,6 +6,7 @@ export default createStore({
     words: [],
     categories: [],
     numOfGuessesRemaining: 4,
+    guesses: [],
   },
   actions: {
     initializeGame({ commit }) {
@@ -36,6 +37,9 @@ export default createStore({
       }
       words.forEach((word) => commit("toggleWordSelected", { word }));
     },
+    saveGuess({ commit }, { guessedWords }) {
+      commit("setGuess", { guess: guessedWords });
+    },
     async fetchCategory({ state }, { id }) {
       return state.categories.find((c) => c.id === id);
     },
@@ -58,6 +62,9 @@ export default createStore({
     },
     reduceNumOfGuessesRemaining(state) {
       state.numOfGuessesRemaining -= 1;
+    },
+    setGuess(state, { guess }) {
+      state.guesses.push(guess);
     },
   },
   modules: {},

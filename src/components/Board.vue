@@ -43,6 +43,7 @@ export default {
       if (selectedWords.length !== 4) {
         alert("select 4 and only 4 words");
       } else {
+        this.$store.dispatch("saveGuess", { guessedWords: selectedWords });
         if (this.isGuessCorrect(selectedWords)) {
           const correctCategoryId = selectedWords[0].categoryId;
           await this.$store.dispatch("handleCorrectGuess", {
