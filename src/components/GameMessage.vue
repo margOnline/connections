@@ -11,19 +11,24 @@ export default {
   name: "GameMessage",
   data() {
     return {
-      messages: {
+      gameOverMessages: {
         0: "Better luck next time",
         1: "Phew",
         2: "Not bad",
         3: "Well done",
         4: "Perfect",
       },
+      inProgressMessage: "Ready to play Connections",
       numOfGuessesRemaining: { type: Number },
     };
   },
   computed: {
     message() {
-      return this.messages[this.numOfGuessesRemaining];
+      if (this.$store.state.categories.every((c) => c.solved)) {
+        return this.gameOverMessagesessages[this.numOfGuessesRemaining];
+      } else {
+        return this.inProgressMessage;
+      }
     },
   },
   created() {

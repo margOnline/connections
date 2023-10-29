@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <GameOverMessage v-if="gameOver"></GameOverMessage>
+    <GameMessage></GameMessage>
     <SolvedCategory
       v-for="category in solvedCategories()"
       :key="category.id"
@@ -9,15 +9,17 @@
     </SolvedCategory>
     <WordList :words="this.unsolvedWords" />
     <SubmitButton v-if="!gameOver" @submit="handleSubmission" />
-    <NumberOfGuesses />
+    <ViewResultButton v-else @view="viewResult" />
+    <NumberOfGuesses v-if="!gameOver" />
   </div>
 </template>
 
 <script>
 import WordList from "@/components/WordList";
 import SubmitButton from "@/components/SubmitButton";
+import ViewResultButton from "@/components/ViewResultButton";
 import SolvedCategory from "@/components/SolvedCategory";
-import GameOverMessage from "@/components/GameOverMessage";
+import GameMessage from "@/components/GameMessage";
 import NumberOfGuesses from "@/components/NumberOfGuesses";
 import _ from "lodash";
 
@@ -26,8 +28,9 @@ export default {
   components: {
     WordList,
     SubmitButton,
+    ViewResultButton,
     SolvedCategory,
-    GameOverMessage,
+    GameMessage,
     NumberOfGuesses,
   },
   props: {
@@ -54,6 +57,9 @@ export default {
       }
       // check only 4 words submitted
       // prevent submission
+    },
+    viewResult() {
+      this.$router.push("Result");
     },
     isGuessCorrect(words) {
       return _.uniqBy(words, (w) => w.categoryId).length === 1;

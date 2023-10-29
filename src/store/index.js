@@ -27,8 +27,13 @@ export default createStore({
       });
       commit("setCorrectCategory", { category });
     },
-    handleIncorrectGuess({ commit }, { words }) {
+    handleIncorrectGuess({ commit, state }, { words }) {
       commit("reduceNumOfGuessesRemaining");
+      if (state.categories === 0) {
+        state.categories.forEach((category) => {
+          commit("setCategorySolved", category);
+        });
+      }
       words.forEach((word) => commit("toggleWordSelected", { word }));
     },
     async fetchCategory({ state }, { id }) {
