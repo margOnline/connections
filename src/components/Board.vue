@@ -40,19 +40,22 @@ export default {
   methods: {
     async handleSubmission() {
       const guessedWords = this.$store.state.words.filter((w) => w.selected);
-      if (guessedWords.length !== 4) {
-        alert("select 4 and only 4 words");
+      if (guessedWords.length !== 4) alert("select 4 and only 4 words");
+
+      const isDuplicateGuess = await this.$store.dispatch("isDuplicateGuess", {
+        guessedWords,
+      });
+      console.log("isDuplicateGuess: ", isDuplicateGuess);
+      if (isDuplicateGuess) alert("You already guessed this");
+
+      if (this.isGuessCorrect(guessedWords)) {
+        await this.$store.dispatch("handleCorrectGuess", {
+          words: guessedWords,
+        });
       } else {
-        if (this.isGuessCorrect(guessedWords)) {
-          await this.$store.dispatch("handleCorrectGuess", {
-            words: guessedWords,
-          });
-        } else {
-          this.$store.dispatch("handleIncorrectGuess", { words: guessedWords });
-        }
+        this.$store.dispatch("handleIncorrectGuess", { words: guessedWords });
       }
       // check only 4 words submitted
-      // prevent submission
     },
     viewResult() {
       this.$router.push("Result");

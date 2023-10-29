@@ -37,6 +37,21 @@ export default createStore({
       }
       words.forEach((word) => commit("toggleWordSelected", { word }));
     },
+    isDuplicateGuess({ state }, { guessedWords }) {
+      if (state.guesses.length === 0) return false;
+      const guessedText = guessedWords
+        .map((w) => w.text)
+        .sort()
+        .join();
+
+      return state.guesses.find(
+        (guess) =>
+          guess
+            .map((w) => w.text)
+            .sort()
+            .join() === guessedText
+      );
+    },
     saveGuess({ commit }, { guessedWords }) {
       commit("setGuess", { guess: guessedWords });
     },
