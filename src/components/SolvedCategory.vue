@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="category-container">
     <div class="banner" :class="category.level.toLowerCase()">
       <h3>{{ category.name }}</h3>
       <p>{{ categoryWords }}</p>
@@ -25,10 +25,14 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
-  margin: 20px auto;
+h3 {
+  margin: 10px;
+}
+p {
+  margin: 5px;
+}
+.category-container {
+  margin: 10px auto;
 }
 .banner {
   padding: 10px;

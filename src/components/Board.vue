@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="board-container">
     <GameMessage></GameMessage>
     <SolvedCategory
       v-for="category in solvedCategories()"
@@ -91,7 +91,10 @@ h2 {
 a {
   color: #42b983;
 }
-
+.board-container {
+  width: 45%;
+  margin: auto;
+}
 ul {
   list-style-type: none;
   padding: 0;

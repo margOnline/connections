@@ -1,9 +1,5 @@
 <template>
-  <div class="container">
-    <div class="banner">
-      <h1>{{ message }}!</h1>
-    </div>
-  </div>
+  <h1>{{ message }}!</h1>
 </template>
 
 <script>
@@ -38,13 +34,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
-  margin: 20px auto;
-}
-.banner {
-  padding: 10px;
-  border-radius: 7px;
+h1 {
+  text-align: center;
 }
 </style>

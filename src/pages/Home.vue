@@ -1,7 +1,5 @@
 <template>
-  <div class="container">
-    <Board :categories="categories" :words="words" />
-  </div>
+  <Board :categories="categories" :words="words" />
 </template>
 
 <script>

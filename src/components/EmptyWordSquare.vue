@@ -22,14 +22,13 @@ export default {
 <style scoped>
 .empty-square {
   display: inline-block;
-  font-size: 2.5vw;
-  height: 75px;
-  width: 75px;
+  height: 60px;
+  width: 60px;
   padding: 10px;
   border: 1px solid black;
   text-align: center;
   border-radius: 8px;
-  line-height: 75px;
+  line-height: 60px;
 }
 .unsolved {
   background-color: rgba(150, 151, 133, 0.527);

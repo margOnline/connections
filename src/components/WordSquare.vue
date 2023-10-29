@@ -25,15 +25,15 @@ export default {
 <style scoped>
 .word {
   display: inline-block;
-  font-size: 2.5vw;
-  height: 75px;
-  width: 75px;
+  font-size: 16px;
+  height: 60px;
+  width: 60px;
   background-color: rgba(238, 238, 238, 0.863);
   padding: 10px;
   text-align: center;
   border: 1px solid rgb(156, 152, 153);
   border-radius: 8px;
-  line-height: 75px;
+  line-height: 60px;
 }
 .word a {
   color: black;
