@@ -25,7 +25,7 @@ export default {
   computed: {
     message() {
       if (this.$store.state.categories.every((c) => c.solved)) {
-        return this.gameOverMessagesessages[this.numOfGuessesRemaining];
+        return this.gameOverMessages[this.numOfGuessesRemaining];
       } else {
         return this.inProgressMessage;
       }

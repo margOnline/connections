@@ -17,18 +17,18 @@ export default createStore({
       const targetWord = state.words.find((w) => w.text === text);
       commit("toggleWordSelected", { word: targetWord });
     },
-    async handleCorrectGuess({ commit, state }, { categoryId }) {
-      const category = state.categories.find((c) => c.id === categoryId);
-      const solvedWords = state.words.filter(
-        (word) => word.categoryId === categoryId
-      );
-      solvedWords.forEach((word) => {
+    async handleCorrectGuess({ commit, state }, { words }) {
+      commit("setGuess", { guess: words });
+      const correctCategoryId = words[0].categoryId;
+      const category = state.categories.find((c) => c.id === correctCategoryId);
+      words.forEach((word) => {
         commit("setWordSolved", { word });
         commit("toggleWordSelected", { word });
       });
       commit("setCorrectCategory", { category });
     },
     handleIncorrectGuess({ commit, state }, { words }) {
+      commit("setGuess", { guess: words });
       commit("reduceNumOfGuessesRemaining");
       if (state.categories === 0) {
         state.categories.forEach((category) => {

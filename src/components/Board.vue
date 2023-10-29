@@ -39,21 +39,16 @@ export default {
   },
   methods: {
     async handleSubmission() {
-      const selectedWords = this.$store.state.words.filter((w) => w.selected);
-      if (selectedWords.length !== 4) {
+      const guessedWords = this.$store.state.words.filter((w) => w.selected);
+      if (guessedWords.length !== 4) {
         alert("select 4 and only 4 words");
       } else {
-        this.$store.dispatch("saveGuess", { guessedWords: selectedWords });
-        if (this.isGuessCorrect(selectedWords)) {
-          const correctCategoryId = selectedWords[0].categoryId;
+        if (this.isGuessCorrect(guessedWords)) {
           await this.$store.dispatch("handleCorrectGuess", {
-            categoryId: correctCategoryId,
+            words: guessedWords,
           });
-          this.updateKey();
         } else {
-          this.$store.dispatch("handleIncorrectGuess", {
-            words: selectedWords,
-          });
+          this.$store.dispatch("handleIncorrectGuess", { words: guessedWords });
         }
       }
       // check only 4 words submitted
@@ -64,9 +59,6 @@ export default {
     },
     isGuessCorrect(words) {
       return _.uniqBy(words, (w) => w.categoryId).length === 1;
-    },
-    updateKey() {
-      return Math.random();
     },
     solvedCategories() {
       const categories = this.$store.state.categories;
