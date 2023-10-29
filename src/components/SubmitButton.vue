@@ -1,5 +1,13 @@
 <template>
-  <button @click="submit" type="submit" class="btn">Submit</button>
+  <button
+    @click="submit"
+    type="submit"
+    class="btn"
+    :class="{ enabled: enabled() }"
+    :disabled="!enabled()"
+  >
+    Submit
+  </button>
 </template>
 
 <script>
@@ -8,6 +16,9 @@ export default {
   methods: {
     submit() {
       this.$emit("submit");
+    },
+    enabled() {
+      return this.$store.state.words.filter((w) => w.selected).length === 4;
     },
   },
 };
@@ -21,5 +32,8 @@ export default {
   background-color: white;
   padding: 8px 16px;
   color: rgb(67, 69, 67);
+}
+.enabled:hover {
+  background-color: grey;
 }
 </style>
