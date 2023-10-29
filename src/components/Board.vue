@@ -7,7 +7,7 @@
       :category="category"
     >
     </SolvedCategory>
-    <WordList :words="this.unsolvedWords" />
+    <WordGrid :words="this.unsolvedWords" />
     <SubmitButton v-if="!gameOver" @submit="handleSubmission" />
     <ViewResultButton v-else @view="viewResult" />
     <NumberOfGuesses v-if="!gameOver" />
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import WordList from "@/components/WordList";
+import WordGrid from "@/components/WordGrid";
 import SubmitButton from "@/components/SubmitButton";
 import ViewResultButton from "@/components/ViewResultButton";
 import SolvedCategory from "@/components/SolvedCategory";
@@ -26,7 +26,7 @@ import _ from "lodash";
 export default {
   name: "Board",
   components: {
-    WordList,
+    WordGrid,
     SubmitButton,
     ViewResultButton,
     SolvedCategory,
