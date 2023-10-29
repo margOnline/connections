@@ -18,7 +18,7 @@ export default {
         3: "Well done",
         4: "Perfect",
       },
-      inProgressMessage: "Ready to play Connections",
+      inProgressMessage: "Create 4 groups of 4",
       numOfGuessesRemaining: { type: Number },
     };
   },
