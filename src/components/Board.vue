@@ -45,8 +45,13 @@ export default {
       const isDuplicateGuess = await this.$store.dispatch("isDuplicateGuess", {
         guessedWords,
       });
-      console.log("isDuplicateGuess: ", isDuplicateGuess);
-      if (isDuplicateGuess) alert("You already guessed this");
+      if (isDuplicateGuess) {
+        alert("You already guessed this");
+        guessedWords.forEach((word) =>
+          this.$store.dispatch("updateWordState", { text: word.text })
+        );
+        return;
+      }
 
       if (this.isGuessCorrect(guessedWords)) {
         await this.$store.dispatch("handleCorrectGuess", {
@@ -55,7 +60,6 @@ export default {
       } else {
         this.$store.dispatch("handleIncorrectGuess", { words: guessedWords });
       }
-      // check only 4 words submitted
     },
     viewResult() {
       this.$router.push("Result");
