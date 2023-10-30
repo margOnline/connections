@@ -15,7 +15,7 @@ export default {
       );
       return category.level.toLowerCase();
     },
-  }
+  },
 };
 </script>
 

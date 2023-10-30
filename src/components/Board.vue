@@ -1,5 +1,5 @@
 <template>
-  <div class="board-container">
+  <div class="word-grid-container">
     <GameMessage></GameMessage>
     <SolvedCategory
       v-for="category in solvedCategories()"
@@ -93,10 +93,6 @@ h2 {
 }
 a {
   color: #42b983;
-}
-.board-container {
-  width: 45%;
-  margin: auto;
 }
 ul {
   list-style-type: none;

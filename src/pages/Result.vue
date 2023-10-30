@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="word-grid-container">
     <h1>Results Page</h1>
     <WordGrid :words="words" />
   </div>

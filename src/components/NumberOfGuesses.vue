@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <div class="guesses-container">
+    Number of guesses remaining
     <div
       v-for="n in numOfGuessesRemaining()"
       :key="n"
@@ -24,17 +25,17 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.guesses-container {
+  margin-top: 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin: 25px auto;
-  padding: 0 40%;
+  grid-template-columns: 8fr 1fr 1fr 1fr 1fr;
 }
 .circle {
-  height: 20px;
-  width: 20px;
-  border-radius: 10px;
+  height: 18px;
+  width: 18px;
+  border-radius: 9px;
   border: 1px solid black;
+  margin: 0;
 }
 .filled {
   background-color: grey;
