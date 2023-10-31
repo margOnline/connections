@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import sourceData from "@/data.json";
+import { isOneAway } from "@/helpers";
 
 export default createStore({
   state: {
@@ -7,6 +8,7 @@ export default createStore({
     categories: [],
     numOfGuessesRemaining: 4,
     guesses: [],
+    oneAway: false,
   },
   actions: {
     initializeGame({ commit }) {
@@ -27,14 +29,12 @@ export default createStore({
       });
       commit("setCorrectCategory", { category });
     },
-    handleIncorrectGuess({ commit, state }, { words }) {
+    handleIncorrectGuess({ commit }, { words }) {
+      commit("setOneAway", { value: false });
       commit("setGuess", { guess: words });
       commit("reduceNumOfGuessesRemaining");
-      if (state.categories === 0) {
-        state.categories.forEach((category) => {
-          commit("setCategorySolved", category);
-        });
-      }
+      const oneIncorrectWord = isOneAway({ words });
+      if (oneIncorrectWord) commit("setOneAway", { value: true });
       words.forEach((word) => commit("toggleWordSelected", { word }));
     },
     isDuplicateGuess({ state }, { guessedWords }) {
@@ -80,6 +80,9 @@ export default createStore({
     },
     setGuess(state, { guess }) {
       state.guesses.push(guess);
+    },
+    setOneAway(state, { value }) {
+      state.oneAway = value;
     },
   },
   modules: {},

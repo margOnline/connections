@@ -1,6 +1,7 @@
 <template>
   <div class="word-grid-container">
     <GameMessage></GameMessage>
+    <AppNotification v-if="this.$store.state.oneAway" />
     <SolvedCategory
       v-for="category in solvedCategories()"
       :key="category.id"
@@ -21,6 +22,8 @@ import ViewResultButton from "@/components/ViewResultButton";
 import SolvedCategory from "@/components/SolvedCategory";
 import GameMessage from "@/components/GameMessage";
 import NumberOfGuesses from "@/components/NumberOfGuesses";
+import AppNotification from "@/components/AppNotification";
+
 import _ from "lodash";
 
 export default {
@@ -32,6 +35,7 @@ export default {
     SolvedCategory,
     GameMessage,
     NumberOfGuesses,
+    AppNotification,
   },
   props: {
     words: { type: Array, required: true },
