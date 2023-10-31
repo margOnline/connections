@@ -1,7 +1,7 @@
 <template>
   <div class="word-grid-container">
     <GameMessage></GameMessage>
-    <AppNotification v-if="this.$store.state.oneAway" />
+    <AppNotifications />
     <SolvedCategory
       v-for="category in solvedCategories()"
       :key="category.id"
@@ -22,7 +22,9 @@ import ViewResultButton from "@/components/ViewResultButton";
 import SolvedCategory from "@/components/SolvedCategory";
 import GameMessage from "@/components/GameMessage";
 import NumberOfGuesses from "@/components/NumberOfGuesses";
-import AppNotification from "@/components/AppNotification";
+import AppNotifications from "@/components/AppNotifications.vue";
+import useNotifications from "@/composables/useNotifications";
+import { isOneAway } from "@/helpers";
 
 import _ from "lodash";
 
@@ -35,14 +37,14 @@ export default {
     SolvedCategory,
     GameMessage,
     NumberOfGuesses,
-    AppNotification,
+    AppNotifications,
   },
   props: {
     words: { type: Array, required: true },
     categories: { type: Array, required: true },
   },
   methods: {
-    async handleSubmission() {
+    handleSubmission: async function () {
       const guessedWords = this.$store.state.words.filter((w) => w.selected);
       if (guessedWords.length !== 4) alert("select 4 and only 4 words");
 
@@ -50,7 +52,7 @@ export default {
         guessedWords,
       });
       if (isDuplicateGuess) {
-        alert("You already guessed this");
+        this.addNotification({ message: "You already guessed this" });
         guessedWords.forEach((word) =>
           this.$store.dispatch("updateWordState", { text: word.text })
         );
@@ -62,6 +64,9 @@ export default {
           words: guessedWords,
         });
       } else {
+        if (isOneAway({ words: guessedWords })) {
+          this.addNotification({ message: "One away" });
+        }
         this.$store.dispatch("handleIncorrectGuess", { words: guessedWords });
       }
     },
@@ -77,6 +82,9 @@ export default {
     },
     categoryWords(categoryId) {
       return this.words.filter((w) => w.categoryId === categoryId);
+    },
+    addNotification({ message }) {
+      useNotifications().addNotification({ message, timeout: 3000 });
     },
   },
   computed: {
