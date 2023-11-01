@@ -8,7 +8,7 @@
       :category="category"
     >
     </SolvedCategory>
-    <WordGrid :words="this.unsolvedWords" />
+    <WordGrid :words="this.unsolvedWords" v-if="!gameOver" />
     <SubmitButton v-if="!gameOver" @submit="handleSubmission" />
     <ViewResultButton v-else @view="viewResult" />
     <NumberOfGuesses v-if="!gameOver" />
@@ -74,9 +74,6 @@ export default {
     solvedCategories() {
       const categories = this.$store.state.categories;
       return categories.filter((c) => c.solved);
-    },
-    categoryWords(categoryId) {
-      return this.words.filter((w) => w.categoryId === categoryId);
     },
   },
   computed: {
