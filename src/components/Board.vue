@@ -84,7 +84,7 @@ export default {
       return this.words.filter((w) => w.categoryId === categoryId);
     },
     addNotification({ message }) {
-      useNotifications().addNotification({ message, timeout: 3000 });
+      useNotifications().addNotification({ message, timeout: 4000 });
     },
   },
   computed: {
