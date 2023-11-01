@@ -1,5 +1,5 @@
 <template>
-  <div class="notification">
+  <div class="notification" :class="{ invisible: !this.$store.state.oneAway }">
     <span>one away</span>
     <button @click="removeNotification()">x</button>
   </div>
@@ -9,8 +9,7 @@
 export default {
   methods: {
     removeNotification() {
-      const notification = document.querySelector(".notification");
-      notification.classList.add("disappear");
+      this.$store.dispatch("toggleOneAway", { value: false });
     },
   },
 };
@@ -26,7 +25,7 @@ export default {
   margin-bottom: 5px;
   border: 1px solid #263959;
 }
-.disappear {
+.invisible {
   display: none;
 }
 </style>

@@ -55,6 +55,9 @@ export default createStore({
     saveGuess({ commit }, { guessedWords }) {
       commit("setGuess", { guess: guessedWords });
     },
+    toggleOneAway({ commit }, { value }) {
+      commit("setOneAway", { value });
+    },
     async fetchCategory({ state }, { id }) {
       return state.categories.find((c) => c.id === id);
     },
