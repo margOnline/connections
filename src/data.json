@@ -1,97 +1,97 @@
 {
   "words": [
     {
-      "text": "goodness",
+      "text": "jupiter",
       "categoryId": 1,
       "selected": false,
       "correct": false
     },
     {
-      "text": "mercy",
+      "text": "apollo",
       "categoryId": 1,
       "selected": false,
       "correct": false
     },
     {
-      "text": "lord",
+      "text": "venus",
       "categoryId": 1,
       "selected": false,
       "correct": false
     },
     {
-      "text": "heavens",
+      "text": "mercury",
       "categoryId": 1,
       "selected": false,
       "correct": false
     },
     {
-      "text": "future",
+      "text": "diamond",
       "categoryId": 2,
       "selected": false,
       "correct": false
     },
     {
-      "text": "perfect",
+      "text": "sapphire",
       "categoryId": 2,
       "selected": false,
       "correct": false
     },
     {
-      "text": "present",
+      "text": "pearl",
       "categoryId": 2,
       "selected": false,
       "correct": false
     },
     {
-      "text": "past",
+      "text": "amethyst",
       "categoryId": 2,
       "selected": false,
       "correct": false
     },
     {
-      "text": "cough",
+      "text": "ruby",
       "categoryId": 3,
       "selected": false,
       "correct": false
     },
     {
-      "text": "simple",
+      "text": "opal",
       "categoryId": 3,
       "selected": false,
       "correct": false
     },
     {
-      "text": "maple",
+      "text": "emerald",
       "categoryId": 3,
       "selected": false,
       "correct": false
     },
     {
-      "text": "corn",
+      "text": "nickle",
       "categoryId": 3,
       "selected": false,
       "correct": false
     },
     {
-      "text": "lady",
+      "text": "mars",
       "categoryId": 4,
       "selected": false,
       "correct": false
     },
     {
-      "text": "drummer",
+      "text": "crunch",
       "categoryId": 4,
       "selected": false,
       "correct": false
     },
     {
-      "text": "ring",
+      "text": "payday",
       "categoryId": 4,
       "selected": false,
       "correct": false
     },
     {
-      "text": "swan",
+      "text": "marathon",
       "categoryId": 4,
       "selected": false,
       "correct": false
@@ -101,26 +101,30 @@
     {
       "id": 1,
       "level": "Easy",
-      "name": "Gracious Me!",
-      "solved": false
+      "name": "Planets",
+      "solved": false,
+      "guessedOrder": 0
     },
     {
       "id": 2,
       "level": "Moderate",
-      "name": "Grammar tense",
-      "solved": false
+      "name": "Precious gems",
+      "solved": false,
+      "guessedOrder": 0
     },
     {
       "id": 3,
       "level": "Challenging",
-      "name": "__Syrup",
-      "solved": false
+      "name": "Programming languages",
+      "solved": false,
+      "guessedOrder": 0
     },
     {
       "id": 4,
       "level": "Hard",
-      "name": "12 Days of Christmas",
-      "solved": false
+      "name": "American candy bars",
+      "solved": false,
+      "guessedOrder": 0
     }
   ]
 }

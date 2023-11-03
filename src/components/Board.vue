@@ -78,7 +78,9 @@ export default {
     },
     solvedCategories() {
       const categories = this.$store.state.categories;
-      return categories.filter((c) => c.solved);
+      return categories
+        .filter((c) => c.solved)
+        .sort((a, b) => a.guessedOrder - b.guessedOrder);
     },
     addNotification({ message }) {
       useNotifications().addNotification({ message, timeout: 4000 });
