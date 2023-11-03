@@ -11,8 +11,13 @@ export default {
 </script>
 
 <style>
-.word-grid-container {
+.container {
   width: 45%;
   margin: auto;
+}
+@media (min-width: 240px) and (max-width: 720px) {
+  .container {
+    width: 100%;
+  }
 }
 </style>
