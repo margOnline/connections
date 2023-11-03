@@ -21,6 +21,10 @@ export default createStore({
       commit("setGuess", { guess: words });
       const correctCategoryId = words[0].categoryId;
       const category = state.categories.find((c) => c.id === correctCategoryId);
+      const prevCorrectGuessOrder = Math.max(
+        ...state.categories.map((c) => c.guessedOrder)
+      );
+      category.guessedOrder = prevCorrectGuessOrder + 1;
       words.forEach((word) => {
         commit("setWordSolved", { word });
         commit("toggleWordSelected", { word });
