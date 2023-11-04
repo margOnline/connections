@@ -27,7 +27,7 @@ export default {
 .word {
   display: inline-block;
   font-family: "Poppins";
-  font-size: 11px;
+  font-size: 3vw;
   font-weight: bold;
   height: 40px;
   width: 40px;

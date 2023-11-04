@@ -34,7 +34,6 @@ export default createStore({
     handleIncorrectGuess({ commit }, { words }) {
       commit("setGuess", { guess: words });
       commit("reduceNumOfGuessesRemaining");
-      words.forEach((word) => commit("toggleWordSelected", { word }));
     },
     isDuplicateGuess({ state }, { guessedWords }) {
       if (state.guesses.length === 0) return false;
