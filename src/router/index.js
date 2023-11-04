@@ -1,19 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
 import store from "@/store";
-import Result from "@/pages/Result";
-
-import Home from "@/pages/Home";
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: () => import(/* webpackChunkName: "home" */ "@/pages/Home"),
   },
   {
     path: "/result",
     name: "Result",
-    component: Result,
+    component: () => import(/* webpackChunkName: "result" */ "@/pages/Result"),
   },
 ];
 
