@@ -30,5 +30,6 @@ export default {
   margin-top: 60px;
   max-width: 800px;
   margin: auto;
+  box-sizing: border-box;
 }
 </style>

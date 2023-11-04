@@ -17,7 +17,7 @@ export default {
     categoryWords() {
       const words = this.$store.state.words
         .filter((w) => w.categoryId === this.category.id)
-        .map((w) => w.text);
+        .map((w) => w.text[0].toUpperCase() + w.text.slice(1));
       return words.join(", ");
     },
   },
@@ -39,15 +39,15 @@ p {
   border-radius: 7px;
 }
 .easy {
-  background-color: rgb(248, 246, 103);
+  background-color: #f9df6d;
 }
 .moderate {
-  background-color: rgb(88, 230, 121);
+  background-color: #a0c35a;
 }
 .challenging {
-  background-color: rgb(183, 135, 245);
+  background-color: #b0c4ef;
 }
 .hard {
-  background-color: rgb(150, 150, 244);
+  background-color: #ba81c5;
 }
 </style>
