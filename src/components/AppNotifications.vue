@@ -26,18 +26,20 @@ export default {
 
 <style scoped>
 .notification {
-  background: #5a594e;
+  background: #6f6e6b;
   color: white;
   display: grid;
   grid-template-columns: 3fr 1fr;
+  width: 60%;
+  margin: auto;
   box-shadow: 2px 2px 2px 2px rbga(0, 0, 0.5);
   padding: 10px 20px;
   margin-bottom: 5px;
-  border: 1px solid #263959;
+  border-radius: 6px;
 }
 .notification-enter-active,
 .notification-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.8s ease;
 }
 .notification-enter-from,
 .notification-leave-to {
@@ -45,6 +47,6 @@ export default {
   transform: translateX(100%);
 }
 .notification-move {
-  transition: transform 0.8s eease;
+  transition: transform 0.8s ease;
 }
 </style>

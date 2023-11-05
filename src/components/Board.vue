@@ -8,8 +8,11 @@
       :category="category"
     >
     </SolvedCategory>
-    <WordGrid :words="this.unsolvedWords" v-if="!gameOver" />
-    <SubmitButton v-if="!gameOver" @submit="handleSubmission" />
+    <WordGrid :words="this.unsolvedWords" v-if="!gameOver" :key="wordGridKey" />
+    <div v-if="!gameOver" class="actions-container">
+      <ActionButton @click="unselectWords()" text="Deselect All" />
+      <SubmitButton @submit="handleSubmission" />
+    </div>
     <ViewResultButton v-else @view="viewResult" />
     <NumberOfGuesses v-if="!gameOver" />
   </div>
@@ -18,6 +21,7 @@
 <script>
 import WordGrid from "@/components/WordGrid";
 import SubmitButton from "@/components/SubmitButton";
+import ActionButton from "@/components/ActionButton";
 import ViewResultButton from "@/components/ViewResultButton";
 import SolvedCategory from "@/components/SolvedCategory";
 import GameMessage from "@/components/GameMessage";
@@ -33,11 +37,17 @@ export default {
   components: {
     WordGrid,
     SubmitButton,
+    ActionButton,
     ViewResultButton,
     SolvedCategory,
     GameMessage,
     NumberOfGuesses,
     AppNotifications,
+  },
+  data() {
+    return {
+      wordGridKey: Math.random(),
+    };
   },
   props: {
     words: { type: Array, required: true },
@@ -87,6 +97,13 @@ export default {
     addNotification({ message }) {
       useNotifications().addNotification({ message, timeout: 4000 });
     },
+    unselectWords() {
+      this.$store.state.words
+        .filter((w) => !w.solved)
+        .forEach((w) => {
+          this.$store.dispatch("unselectWord", { word: w });
+        });
+    },
   },
   computed: {
     unsolvedWords() {
@@ -116,5 +133,9 @@ ul {
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.actions-container > a,
+.actions-container > button {
+  margin: 5px;
 }
 </style>

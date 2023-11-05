@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!word.correct" class="empty-square unsolved"></div>
+  <div v-if="!word.solved" class="empty-square unsolved"></div>
   <div v-else class="empty-square" :class="solvedCategoryLevel"></div>
 </template>
 
