@@ -90,7 +90,7 @@ export default {
   },
   computed: {
     unsolvedWords() {
-      const words = this.$store.state.words.filter((word) => !word.correct);
+      const words = this.$store.state.words.filter((word) => !word.solved);
       return _.shuffle(words);
     },
     gameOver() {
