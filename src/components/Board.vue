@@ -8,8 +8,9 @@
       :category="category"
     >
     </SolvedCategory>
-    <WordGrid :words="this.unsolvedWords" v-if="!gameOver" :key="wordGridKey" />
+    <WordGrid :words="unsolvedWords()" v-if="!gameOver" :key="wordGridKey" />
     <div v-if="!gameOver" class="actions-container">
+      <ActionButton @click="shuffleWords()" text="Shuffle" />
       <ActionButton @click="unselectWords()" text="Deselect All" />
       <SubmitButton @submit="handleSubmission" />
     </div>
@@ -104,12 +105,15 @@ export default {
           this.$store.dispatch("unselectWord", { word: w });
         });
     },
-  },
-  computed: {
+    shuffleWords() {
+      this.wordGridKey = Math.random();
+    },
     unsolvedWords() {
       const words = this.$store.state.words.filter((word) => !word.solved);
       return _.shuffle(words);
     },
+  },
+  computed: {
     gameOver() {
       return (
         this.$store.state.numOfGuessesRemaining === 0 ||
