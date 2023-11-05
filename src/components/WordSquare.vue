@@ -35,7 +35,7 @@ export default {
   padding: 10px;
   text-align: center;
   border-radius: 6px;
-  line-height: 40px;
+  line-height: 20px;
 }
 .word a {
   color: black;
