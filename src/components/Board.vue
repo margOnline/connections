@@ -61,10 +61,15 @@ export default {
           words: guessedWords,
         });
       } else {
+        const wordElements = this.$el.querySelectorAll(".selected");
+        wordElements.forEach((el) => el.classList.add("shake"));
         if (isOneAway({ words: guessedWords })) {
           this.addNotification({ message: "One away" });
         }
         this.$store.dispatch("handleIncorrectGuess", { words: guessedWords });
+        setTimeout(() => {
+          wordElements.forEach((el) => el.classList.remove("shake"));
+        }, 1000);
       }
     },
     viewResult() {
