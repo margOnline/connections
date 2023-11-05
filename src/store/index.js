@@ -59,6 +59,9 @@ export default createStore({
     async fetchCategory({ state }, { id }) {
       return state.categories.find((c) => c.id === id);
     },
+    unselectWord({ commit }, { word }) {
+      commit("setWordUnselected", { word });
+    },
   },
   mutations: {
     setCategories(state, { categories }) {
@@ -73,8 +76,8 @@ export default createStore({
     setWordSolved(state, { word }) {
       word.solved = true;
     },
-    toggleWordCorrect(state, { word }) {
-      word.correct = true;
+    setWordUnselected(state, { word }) {
+      word.selected = false;
     },
     setCorrectCategory(state, { category }) {
       category.solved = true;
