@@ -53,9 +53,6 @@ export default {
       });
       if (isDuplicateGuess) {
         this.addNotification({ message: "You already guessed this" });
-        guessedWords.forEach((word) =>
-          this.$store.dispatch("updateWordState", { text: word.text })
-        );
         return;
       }
 
