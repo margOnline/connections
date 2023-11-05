@@ -38,16 +38,4 @@ p {
   padding: 10px;
   border-radius: 7px;
 }
-.easy {
-  background-color: #f9df6d;
-}
-.moderate {
-  background-color: #a0c35a;
-}
-.challenging {
-  background-color: #b0c4ef;
-}
-.hard {
-  background-color: #ba81c5;
-}
 </style>

@@ -15,6 +15,18 @@ export default {
   width: 45%;
   margin: auto;
 }
+.easy {
+  background-color: #f9df6d;
+}
+.moderate {
+  background-color: #a0c35a;
+}
+.challenging {
+  background-color: #b0c4ef;
+}
+.hard {
+  background-color: #ba81c5;
+}
 @media (min-width: 768px) and (max-width: 1060px) {
   .container {
     width: 60%;
