@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
 .notification {
-  background: black;
+  background: #5a594e;
   color: white;
   display: grid;
   grid-template-columns: 3fr 1fr;
