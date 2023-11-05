@@ -57,4 +57,24 @@ export default {
     font-size: 3vw;
   }
 }
+.incorrect {
+  animation: horizontal-shaking 0.35s infinte;
+}
+@keyframes horizontal-shaking {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 </style>
