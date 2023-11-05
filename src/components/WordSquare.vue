@@ -27,7 +27,7 @@ export default {
 .word {
   display: inline-block;
   font-family: "Poppins";
-  font-size: 3vw;
+  font-size: 0.75vw;
   font-weight: bold;
   height: 40px;
   width: 40px;
@@ -45,11 +45,16 @@ export default {
   color: white;
   font-weight: bold;
 }
-.correct {
-  background-color: rgb(190, 240, 190);
-  pointer-events: none;
+@media (min-width: 721px) and (max-width: 1024px) {
+  .word {
+    font-size: 2vw;
+    height: 80px;
+    width: 80px;
+  }
 }
-.incorrect {
-  background-color: rgb(246, 220, 220);
+@media (min-width: 240px) and (max-width: 720px) {
+  .word {
+    font-size: 3vw;
+  }
 }
 </style>
