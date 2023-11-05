@@ -71,6 +71,9 @@ export default createStore({
       word.selected = !word.selected;
     },
     setWordSolved(state, { word }) {
+      word.solved = true;
+    },
+    toggleWordCorrect(state, { word }) {
       word.correct = true;
     },
     setCorrectCategory(state, { category }) {
