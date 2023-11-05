@@ -1,98 +1,99 @@
 {
   "words": [
     {
-      "text": "jupiter",
+      "text": "orchid",
       "categoryId": 1,
       "selected": false,
       "correct": false
     },
     {
-      "text": "neptune",
+      "text": "fuschia",
       "categoryId": 1,
       "selected": false,
       "correct": false
     },
     {
-      "text": "venus",
+      "text": "plum",
       "categoryId": 1,
       "selected": false,
       "correct": false
     },
     {
-      "text": "mercury",
+      "text": "mulberry",
       "categoryId": 1,
       "selected": false,
       "correct": false
     },
     {
-      "text": "diamond",
+      "text": "harry",
       "categoryId": 2,
       "selected": false,
       "correct": false
     },
     {
-      "text": "sapphire",
+      "text": "tom",
       "categoryId": 2,
       "selected": false,
       "correct": false
     },
     {
-      "text": "pearl",
+      "text": "peter",
       "categoryId": 2,
       "selected": false,
       "correct": false
     },
     {
-      "text": "amethyst",
+      "text": "lavender",
       "categoryId": 2,
       "selected": false,
       "correct": false
     },
     {
-      "text": "ruby",
-      "categoryId": 3,
-      "selected": false,
-      "correct": false
-    },
-    {
-      "text": "opal",
-      "categoryId": 3,
-      "selected": false,
-      "correct": false
-    },
-    {
-      "text": "emerald",
-      "categoryId": 3,
-      "selected": false,
-      "correct": false
-    },
-    {
-      "text": "nickle",
-      "categoryId": 3,
-      "selected": false,
-      "correct": false
-    },
-    {
-      "text": "mars",
+      "text": "charlie",
       "categoryId": 4,
       "selected": false,
       "correct": false
     },
     {
-      "text": "crunch",
+      "text": "james",
       "categoryId": 4,
       "selected": false,
       "correct": false
     },
     {
-      "text": "payday",
+      "text": "willy",
       "categoryId": 4,
       "selected": false,
       "correct": false
     },
     {
-      "text": "marathon",
+      "text": "violet",
       "categoryId": 4,
+      "selected": false,
+      "correct": false
+    },
+    
+    {
+      "text": "china white",
+      "categoryId": 3,
+      "selected": false,
+      "correct": false
+    },
+    {
+      "text": "snow",
+      "categoryId": 3,
+      "selected": false,
+      "correct": false
+    },
+    {
+      "text": "glass",
+      "categoryId": 3,
+      "selected": false,
+      "correct": false
+    },
+    {
+      "text": "molly",
+      "categoryId": 3,
       "selected": false,
       "correct": false
     }
@@ -101,28 +102,28 @@
     {
       "id": 1,
       "level": "Easy",
-      "name": "Planets",
+      "name": "Shades of purple",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 2,
       "level": "Moderate",
-      "name": "Precious gems",
+      "name": "Characters in the Harry Potter books",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 3,
       "level": "Challenging",
-      "name": "Programming languages",
+      "name": "Slang words for drugs",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 4,
       "level": "Hard",
-      "name": "American candy bars",
+      "name": "Characters in Roald Dahl books",
       "solved": false,
       "guessedOrder": 0
     }
