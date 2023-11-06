@@ -1,6 +1,7 @@
 <template>
   <div class="word-grid-container">
     <GameMessage></GameMessage>
+    <InstructionPanel />
     <AppNotifications />
     <SolvedCategory
       v-for="category in solvedCategories()"
@@ -29,6 +30,7 @@ import GameMessage from "@/components/GameMessage";
 import NumberOfGuesses from "@/components/NumberOfGuesses";
 import AppNotifications from "@/components/AppNotifications.vue";
 import useNotifications from "@/composables/useNotifications";
+import InstructionPanel from "@/components/InstructionPanel.vue";
 import { isOneAway } from "@/helpers";
 
 import _ from "lodash";
@@ -44,6 +46,7 @@ export default {
     GameMessage,
     NumberOfGuesses,
     AppNotifications,
+    InstructionPanel,
   },
   data() {
     return {
