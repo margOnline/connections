@@ -1,7 +1,7 @@
 <template>
-  <div class="help-modal" :class="{ 'modal-open': showModal }">
+  <div class="help-modal" :class="{ 'modal-open': showModal() }">
     <div class="modal-content">
-      <a @click="closeModal()" class="close-modal-indicator" href="#">X</a>
+      <a @click="closeModal" class="close-modal-indicator" href="#">X</a>
       <h2>How to play Connections</h2>
       <h3>Find groups of four items that share something in common.</h3>
       <ul>
@@ -28,11 +28,23 @@
           Each group is assigned a color, which will be revealed as you solve:
         </p>
         <div class="color-emojis">
-          <img id="help-arrow" src="https://www.nytimes.com/games-assets/v2/metadata/help_arrow.svg" alt="levels description arrow">
-          <div class="color-emoji easy"><span class="help-emoji">Straightforward</span></div>
-          <div class="color-emoji moderate"><span class="help-emoji"></span></div>
-          <div class="color-emoji challenging"><span class="help-emoji"></span></div>
-          <div class="color-emoji hard"><span class="help-emoji"></span>Tricky</div>
+          <img
+            id="help-arrow"
+            src="https://www.nytimes.com/games-assets/v2/metadata/help_arrow.svg"
+            alt="levels description arrow"
+          />
+          <div class="color-emoji easy">
+            <span class="help-emoji">Straightforward</span>
+          </div>
+          <div class="color-emoji moderate">
+            <span class="help-emoji"></span>
+          </div>
+          <div class="color-emoji challenging">
+            <span class="help-emoji"></span>
+          </div>
+          <div class="color-emoji hard">
+            <span class="help-emoji"></span>Tricky
+          </div>
         </div>
       </div>
       <div class="color-level"></div>
@@ -43,15 +55,12 @@
 <script>
 export default {
   name: "InstructionPanel",
-  data() {
-    return {
-      showModal: false,
-    };
-  },
   methods: {
+    showModal() {
+      return this.$store.state.showInstructionModal;
+    },
     closeModal() {
-      console.log("in close modal");
-      this.showModal = false;
+      this.$store.dispatch("updateShowInstructionModal", { value: false });
     },
   },
 };
@@ -60,6 +69,11 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500&display=swap");
 .help-modal {
+  visibility: hidden;
+}
+.modal-content {
+  font-family: "Source Serif 4", serif;
+  text-align: left;
   max-height: 95%;
   width: 60%;
   border-radius: 10px 10px 0 0;
@@ -69,11 +83,6 @@ export default {
   left: 20%;
   background-color: white;
   padding: 5px 20px 20px 20px;
-}
-.modal-content {
-  font-family: "Source Serif 4", serif;
-  text-align: left;
-  width: 100%;
 }
 .modal-content > p,
 .modal-content > ul,
@@ -90,6 +99,7 @@ export default {
 .close-modal-indicator {
   font-size: 24px;
   text-decoration: none;
+  margin-left: 90%;
 }
 .color-emoji {
   height: 20px;
@@ -104,5 +114,18 @@ export default {
   left: 3.2rem;
   bottom: 3rem;
   position: absolute;
+}
+
+@media (min-width: 721px) and (max-width: 1024px) {
+  .modal-content {
+    width: 80%;
+  }
+}
+@media (min-width: 240px) and (max-width: 720px) {
+  .modal-content {
+    width: 95%;
+    top: 5%;
+    left: 1%;
+  }
 }
 </style>
