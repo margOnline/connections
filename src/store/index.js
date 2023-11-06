@@ -7,6 +7,7 @@ export default createStore({
     categories: [],
     numOfGuessesRemaining: 4,
     guesses: [],
+    showInstructionModal: false,
   },
   actions: {
     initializeGame({ commit }) {
@@ -62,6 +63,9 @@ export default createStore({
     unselectWord({ commit }, { word }) {
       commit("setWordUnselected", { word });
     },
+    updateShowInstructionModal({ commit }, { value }) {
+      commit("setShowInstructionModal", { value });
+    },
   },
   mutations: {
     setCategories(state, { categories }) {
@@ -87,6 +91,9 @@ export default createStore({
     },
     setGuess(state, { guess }) {
       state.guesses.push(guess);
+    },
+    setShowInstructionModal(state, { value }) {
+      state.showInstructionModal = value;
     },
   },
   modules: {},

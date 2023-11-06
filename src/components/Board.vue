@@ -1,6 +1,15 @@
 <template>
   <div class="word-grid-container">
+    <button
+      @click="showInstructions"
+      id="help-button"
+      aria-label="help"
+      class="toolbar-button"
+    >
+      <i class="help-icon">?</i>
+    </button>
     <GameMessage></GameMessage>
+    <InstructionPanel />
     <AppNotifications />
     <SolvedCategory
       v-for="category in solvedCategories()"
@@ -29,6 +38,7 @@ import GameMessage from "@/components/GameMessage";
 import NumberOfGuesses from "@/components/NumberOfGuesses";
 import AppNotifications from "@/components/AppNotifications.vue";
 import useNotifications from "@/composables/useNotifications";
+import InstructionPanel from "@/components/InstructionPanel.vue";
 import { isOneAway } from "@/helpers";
 
 import _ from "lodash";
@@ -44,6 +54,7 @@ export default {
     GameMessage,
     NumberOfGuesses,
     AppNotifications,
+    InstructionPanel,
   },
   data() {
     return {
@@ -112,6 +123,9 @@ export default {
       const words = this.$store.state.words.filter((word) => !word.solved);
       return _.shuffle(words);
     },
+    showInstructions() {
+      this.$store.dispatch("updateShowInstructionModal", { value: true });
+    },
   },
   computed: {
     gameOver() {
@@ -141,5 +155,14 @@ ul {
 .actions-container > a,
 .actions-container > button {
   margin: 5px;
+}
+#help-button {
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  background-color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 90%;
 }
 </style>
