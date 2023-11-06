@@ -1,7 +1,7 @@
 <template>
   <div class="help-modal" :class="{ 'modal-open': showModal }">
     <div class="modal-content">
-      <a @click="closeModal()" class="close-panel-indicator" href="#">X</a>
+      <a @click="closeModal()" class="close-modal-indicator" href="#">X</a>
       <h2>How to play Connections</h2>
       <h3>Find groups of four items that share something in common.</h3>
       <ul>
@@ -12,8 +12,8 @@
       </ul>
       <h3>Category Examples</h3>
       <ul>
-        <li>FISH: Bass, Flounder, Salmon, Trout</li>
-        <li>FIRE___: Ant, Drill, Island, Opal</li>
+        <li>Investments: Bond, Stock, Option, CD</li>
+        <li>___BONE: Wish, Funny, Soup, Herring</li>
       </ul>
       <p>
         Categories will always be more specific than "5-LETTER WORDS","NAMES",
@@ -23,10 +23,18 @@
         Each puzzle has exactly one solution. Watch out for words that seem to
         belong to multiple categories!
       </p>
-      <p>
-        Each group is assigned a color, which will be revealed as you solve:
-      </p>
-      <div class="colors"></div>
+      <div class="color-descriptions">
+        <p>
+          Each group is assigned a color, which will be revealed as you solve:
+        </p>
+        <div class="color-emojis">
+          <img id="help-arrow" src="https://www.nytimes.com/games-assets/v2/metadata/help_arrow.svg" alt="levels description arrow">
+          <div class="color-emoji easy"><span class="help-emoji">Straightforward</span></div>
+          <div class="color-emoji moderate"><span class="help-emoji"></span></div>
+          <div class="color-emoji challenging"><span class="help-emoji"></span></div>
+          <div class="color-emoji hard"><span class="help-emoji"></span>Tricky</div>
+        </div>
+      </div>
       <div class="color-level"></div>
     </div>
   </div>
@@ -68,7 +76,9 @@ export default {
   width: 100%;
 }
 .modal-content > p,
-.modal-content > ul {
+.modal-content > ul,
+.modal-content > a,
+.modal-content > .color-descriptions {
   font-family: sans-serif;
 }
 .modal-content > ul {
@@ -77,9 +87,22 @@ export default {
 .modal-open {
   visibility: visible;
 }
-.close-panel-indicator {
-
-  font-size: 36px;
+.close-modal-indicator {
+  font-size: 24px;
   text-decoration: none;
+}
+.color-emoji {
+  height: 20px;
+  width: 20px;
+  margin-bottom: 5px;
+}
+.help-emoji {
+  margin-left: 25px;
+}
+#help-arrow {
+  height: 3.2rem;
+  left: 3.2rem;
+  bottom: 3rem;
+  position: absolute;
 }
 </style>
