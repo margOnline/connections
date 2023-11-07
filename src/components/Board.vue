@@ -17,7 +17,7 @@
       :category="category"
     >
     </SolvedCategory>
-    <WordGrid :words="unsolvedWords()" v-if="!gameOver" :key="wordGridKey" />
+    <WordGrid :words="unsolvedWords" v-if="!gameOver" :key="wordGridKey" />
     <div v-if="!gameOver" class="actions-container">
       <ActionButton @click="shuffleWords()" text="Shuffle" />
       <ActionButton @click="unselectWords()" text="Deselect All" />
@@ -59,6 +59,7 @@ export default {
   data() {
     return {
       wordGridKey: Math.random(),
+      prevWordGridKey: null,
     };
   },
   props: {
@@ -117,11 +118,8 @@ export default {
         });
     },
     shuffleWords() {
+      this.prevWordGridKey = this.wordGridKey;
       this.wordGridKey = Math.random();
-    },
-    unsolvedWords() {
-      const words = this.$store.state.words.filter((word) => !word.solved);
-      return _.shuffle(words);
     },
     showInstructions() {
       this.$store.dispatch("updateShowInstructionModal", { value: true });
@@ -133,6 +131,14 @@ export default {
         this.$store.state.numOfGuessesRemaining === 0 ||
         this.$store.state.categories.every((c) => c.solved)
       );
+    },
+    unsolvedWords() {
+      const words = this.$store.state.words.filter((word) => !word.solved);
+      if (this.wordGridKey === this.prevWordGridKey) {
+        return words;
+      } else {
+        return _.shuffle(words);
+      }
     },
   },
 };
