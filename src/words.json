@@ -1,0 +1,101 @@
+{
+  "items": [
+    {
+      "text": "orchid",
+      "categoryId": 1,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "fuschia",
+      "categoryId": 1,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "plum",
+      "categoryId": 1,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "mulberry",
+      "categoryId": 1,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "harry",
+      "categoryId": 2,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "tom",
+      "categoryId": 2,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "peter",
+      "categoryId": 2,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "lavender",
+      "categoryId": 2,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "charlie",
+      "categoryId": 4,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "james",
+      "categoryId": 4,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "willy",
+      "categoryId": 4,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "violet",
+      "categoryId": 4,
+      "selected": false,
+      "solved": false
+    },
+    
+    {
+      "text": "china white",
+      "categoryId": 3,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "snow",
+      "categoryId": 3,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "glass",
+      "categoryId": 3,
+      "selected": false,
+      "solved": false
+    },
+    {
+      "text": "molly",
+      "categoryId": 3,
+      "selected": false,
+      "solved": false
+    }
+  ]
+}

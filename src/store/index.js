@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
-import sourceData from "@/data.json";
+import words from "@/words.json";
+import categories from "@/categories.json";
 
 export default createStore({
   state: {
@@ -28,8 +29,8 @@ export default createStore({
         commit("setGuesses", { guesses: JSON.parse(guesses) });
       } else {
         localStorage.setItem("gameInProgress", true);
-        commit("setCategories", { categories: sourceData.categories });
-        commit("setWords", { words: sourceData.words });
+        commit("setCategories", { categories: categories.items });
+        commit("setWords", { words: words.items });
         localStorage.setItem(JSON.stringify("categories", state.categories));
         localStorage.setItem(JSON.stringify);
         localStorage.setItem(
