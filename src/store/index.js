@@ -10,9 +10,33 @@ export default createStore({
     showInstructionModal: false,
   },
   actions: {
-    initializeGame({ commit }) {
-      commit("setCategories", { categories: sourceData.categories });
-      commit("setWords", { words: sourceData.words });
+    initializeGame({ commit, state }) {
+      if (
+        localStorage.getItem("gameInProgress") &&
+        localStorage.getItem("categories") &&
+        localStorage.getItem("words")
+      ) {
+        const categories = localStorage.getItem("categories");
+        const words = localStorage.getItem("words");
+        const numOfGuessesRemaining = localStorage.getItem(
+          "numOfGuessesRemaining"
+        );
+        const guesses = localStorage.getItem("guesses");
+        commit("setCategories", { categories: JSON.parse(categories) });
+        commit("setWords", { words: JSON.parse(words) });
+        commit("setNumOfGuessesRemaining", { numOfGuessesRemaining });
+        commit("setGuesses", { guesses: JSON.parse(guesses) });
+      } else {
+        localStorage.setItem("gameInProgress", true);
+        commit("setCategories", { categories: sourceData.categories });
+        commit("setWords", { words: sourceData.words });
+        localStorage.setItem(JSON.stringify("categories", state.categories));
+        localStorage.setItem(JSON.stringify);
+        localStorage.setItem(
+          JSON.stringify("numOfGuessesRemaining", state.numOfGuessesRemaining)
+        );
+        localStorage.setItem(JSON.stringify("guesses", state.guesses));
+      }
     },
     updateWordState({ commit, state }, { text }) {
       const targetWord = state.words.find((w) => w.text === text);
@@ -20,6 +44,7 @@ export default createStore({
     },
     async handleCorrectGuess({ commit, state }, { words }) {
       commit("setGuess", { guess: words });
+      localStorage.setItem(JSON.stringify("guesses", state.guesses));
       const correctCategoryId = words[0].categoryId;
       const category = state.categories.find((c) => c.id === correctCategoryId);
       const prevCorrectGuessOrder = Math.max(
@@ -31,10 +56,17 @@ export default createStore({
         commit("toggleWordSelected", { word });
       });
       commit("setCorrectCategory", { category });
+      localStorage.setItem(JSON.stringify("categories", state.categories));
+      localStorage.setItem(JSON.stringify("words", state.words));
     },
-    handleIncorrectGuess({ commit }, { words }) {
+    handleIncorrectGuess({ commit, state }, { words }) {
       commit("setGuess", { guess: words });
       commit("reduceNumOfGuessesRemaining");
+      localStorage.setItem(
+        "numOfGuessesRemaining",
+        state.numOfGuessesRemaining
+      );
+      localStorage.setItem(JSON.stringify("guesses", state.guesses));
     },
     isDuplicateGuess({ state }, { guessedWords }) {
       if (state.guesses.length === 0) return false;
@@ -51,8 +83,9 @@ export default createStore({
             .join() === guessedText
       );
     },
-    saveGuess({ commit }, { guessedWords }) {
+    saveGuess({ commit, state }, { guessedWords }) {
       commit("setGuess", { guess: guessedWords });
+      localStorage.setItem(JSON.stringify("guesses", state.guesses));
     },
     toggleOneAway({ commit }, { value }) {
       commit("setOneAway", { value });
@@ -94,6 +127,12 @@ export default createStore({
     },
     setShowInstructionModal(state, { value }) {
       state.showInstructionModal = value;
+    },
+    setNumOfGuessesRemaining(state, { numOfGuessesRemaining }) {
+      state.numOfGuessesRemaining = numOfGuessesRemaining;
+    },
+    setGuesses(state, { guesses }) {
+      state.guesses = guesses;
     },
   },
   modules: {},
