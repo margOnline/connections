@@ -10,14 +10,9 @@ import WordGrid from "@/components/WordGrid";
 
 export default {
   components: { WordGrid },
-  methods: {
-    guesses() {
-      return this.$store.state.guesses;
-    },
-  },
   computed: {
     words() {
-      return this.$store.state.words;
+      return this.$store.state.guesses.flat();
     },
   },
 };
