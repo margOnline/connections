@@ -13,9 +13,8 @@ export default createStore({
   actions: {
     initializeGame({ commit, state }) {
       if (
-        localStorage.getItem("gameInProgress") &&
-        localStorage.getItem("categories") &&
-        localStorage.getItem("words")
+        localStorage.getItem("gameInProgress") ===
+        new Date().getDate().toString()
       ) {
         const categories = localStorage.getItem("categories");
         const words = localStorage.getItem("words");
@@ -28,7 +27,7 @@ export default createStore({
         commit("setNumOfGuessesRemaining", { numOfGuessesRemaining });
         commit("setGuesses", { guesses: JSON.parse(guesses) });
       } else {
-        localStorage.setItem("gameInProgress", true);
+        localStorage.setItem("gameInProgress", new Date().getDate().toString());
         commit("setCategories", { categories: categories.items });
         commit("setWords", { words: words.items });
         localStorage.setItem(JSON.stringify("categories", state.categories));
@@ -44,21 +43,22 @@ export default createStore({
       commit("toggleWordSelected", { word: targetWord });
     },
     async handleCorrectGuess({ commit, state }, { words }) {
-      commit("setGuess", { guess: words });
-      localStorage.setItem(JSON.stringify("guesses", state.guesses));
+      const solvedWords = words.map((word) => [{ ...word, solved: true }]);
+
+      solvedWords.forEach((word) => {
+        commit("setWordSolved", { word });
+        commit("toggleWordSelected", { word });
+      });
+      commit("setGuess", { guess: solvedWords });
+      localStorage.setItem("guesses", JSON.stringify(state.guesses));
       const correctCategoryId = words[0].categoryId;
       const category = state.categories.find((c) => c.id === correctCategoryId);
       const prevCorrectGuessOrder = Math.max(
         ...state.categories.map((c) => c.guessedOrder)
       );
       category.guessedOrder = prevCorrectGuessOrder + 1;
-      words.forEach((word) => {
-        commit("setWordSolved", { word });
-        commit("toggleWordSelected", { word });
-      });
       commit("setCorrectCategory", { category });
-      localStorage.setItem(JSON.stringify("categories", state.categories));
-      localStorage.setItem(JSON.stringify("words", state.words));
+      localStorage.setItem("categories", JSON.stringify(state.categories));
     },
     handleIncorrectGuess({ commit, state }, { words }) {
       commit("setGuess", { guess: words });

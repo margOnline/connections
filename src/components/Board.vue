@@ -17,7 +17,7 @@
       :category="category"
     >
     </SolvedCategory>
-    <WordGrid :words="unsolvedWords" v-if="!gameOver" :key="wordGridKey" />
+    <WordGrid :words="unsolvedWords()" v-if="!gameOver" :key="wordGridKey" />
     <div v-if="!gameOver" class="actions-container">
       <ActionButton @click="shuffleWords()" text="Shuffle" />
       <ActionButton @click="unselectWords()" text="Deselect All" />
@@ -67,6 +67,14 @@ export default {
     categories: { type: Array, required: true },
   },
   methods: {
+    unsolvedWords() {
+      const words = this.$store.state.words.filter((word) => !word.solved);
+      if (this.wordGridKey === this.prevWordGridKey) {
+        return words;
+      } else {
+        return _.shuffle(words);
+      }
+    },
     handleSubmission: async function () {
       const guessedWords = this.$store.state.words.filter((w) => w.selected);
       if (guessedWords.length !== 4) alert("select 4 and only 4 words");
@@ -131,14 +139,6 @@ export default {
         this.$store.state.numOfGuessesRemaining === 0 ||
         this.$store.state.categories.every((c) => c.solved)
       );
-    },
-    unsolvedWords() {
-      const words = this.$store.state.words.filter((word) => !word.solved);
-      if (this.wordGridKey === this.prevWordGridKey) {
-        return words;
-      } else {
-        return _.shuffle(words);
-      }
     },
   },
 };
