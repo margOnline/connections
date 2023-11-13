@@ -43,12 +43,12 @@ export default createStore({
       commit("toggleWordSelected", { word: targetWord });
     },
     async handleCorrectGuess({ commit, state }, { words }) {
-      const solvedWords = words.map((word) => [{ ...word, solved: true }]);
-
-      solvedWords.forEach((word) => {
+      words.forEach((word) => {
         commit("setWordSolved", { word });
         commit("toggleWordSelected", { word });
       });
+
+      const solvedWords = words.map((word) => [{ ...word, solved: true }]);
       commit("setGuess", { guess: solvedWords });
       localStorage.setItem("guesses", JSON.stringify(state.guesses));
       const correctCategoryId = words[0].categoryId;
@@ -58,6 +58,7 @@ export default createStore({
       );
       category.guessedOrder = prevCorrectGuessOrder + 1;
       commit("setCorrectCategory", { category });
+      localStorage.setItem("words", JSON.stringify(state.words));
       localStorage.setItem("categories", JSON.stringify(state.categories));
     },
     handleIncorrectGuess({ commit, state }, { words }) {
@@ -140,6 +141,9 @@ export default createStore({
   getters: {
     numOfGuesses: (state) => {
       return state.numOfGuessesRemaining;
+    },
+    unsolvedWords: (state) => {
+      return state.words.filter((word) => !word.solved);
     },
   },
 });

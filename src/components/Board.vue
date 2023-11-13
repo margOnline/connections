@@ -17,7 +17,7 @@
       :category="category"
     >
     </SolvedCategory>
-    <WordGrid :words="unsolvedWords()" v-if="!gameOver" :key="wordGridKey" />
+    <WordGrid :words="wordsForGrid" v-if="!gameOver" :key="wordGridKey" />
     <div v-if="!gameOver" class="actions-container">
       <ActionButton @click="shuffleWords()" text="Shuffle" />
       <ActionButton @click="unselectWords()" text="Deselect All" />
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import WordGrid from "@/components/WordGrid";
 import SubmitButton from "@/components/SubmitButton";
 import ActionButton from "@/components/ActionButton";
@@ -67,14 +68,6 @@ export default {
     categories: { type: Array, required: true },
   },
   methods: {
-    unsolvedWords() {
-      const words = this.$store.state.words.filter((word) => !word.solved);
-      if (this.wordGridKey === this.prevWordGridKey) {
-        return words;
-      } else {
-        return _.shuffle(words);
-      }
-    },
     handleSubmission: async function () {
       const guessedWords = this.$store.state.words.filter((w) => w.selected);
       if (guessedWords.length !== 4) alert("select 4 and only 4 words");
@@ -134,6 +127,14 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(["unsolvedWords"]),
+    wordsForGrid() {
+      if (this.wordGridKey === this.prevWordGridKey) {
+        return this.unsolvedWords;
+      } else {
+        return _.shuffle(this.unsolvedWords);
+      }
+    },
     gameOver() {
       return (
         this.$store.state.numOfGuessesRemaining === 0 ||
