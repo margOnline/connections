@@ -116,16 +116,36 @@ export default {
   position: absolute;
 }
 
-@media (min-width: 721px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .modal-content {
     width: 80%;
   }
 }
-@media (min-width: 240px) and (max-width: 720px) {
+@media (min-width: 481px) and (max-width: 768px) {
+  .modal-content {
+    width: 90%;
+    top: 5%;
+    left: 1%;
+  }
+}
+@media (min-width: 376px) and (max-width: 480px) {
   .modal-content {
     width: 95%;
     top: 5%;
     left: 1%;
+  }
+}
+@media (min-width: 300px) and (max-width: 375px) {
+  .modal-content {
+    width: 95%;
+    top: 5%;
+    left: 1%;
+  }
+  #help-arrow {
+    height: 3.2rem;
+    left: 3.2rem;
+    bottom: 0rem;
+    position: absolute;
   }
 }
 </style>

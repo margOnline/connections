@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "level": "Easy",
+      "name": "Shades of purple",
+      "solved": false,
+      "guessedOrder": 0
+    },
+    {
+      "id": 2,
+      "level": "Moderate",
+      "name": "Characters in the Harry Potter books",
+      "solved": false,
+      "guessedOrder": 0
+    },
+    {
+      "id": 3,
+      "level": "Challenging",
+      "name": "Slang words for drugs",
+      "solved": false,
+      "guessedOrder": 0
+    },
+    {
+      "id": 4,
+      "level": "Hard",
+      "name": "Characters in Roald Dahl books",
+      "solved": false,
+      "guessedOrder": 0
+    }
+  ]
+}

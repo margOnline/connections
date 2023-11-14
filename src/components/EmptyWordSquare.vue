@@ -7,10 +7,11 @@
 export default {
   props: {
     word: { type: Object, required: true },
+    categories: { type: Array, required: true },
   },
   computed: {
     solvedCategoryLevel() {
-      const category = this.$store.state.categories.find(
+      const category = this.categories.find(
         (c) => c.id === this.word.categoryId
       );
       return category.level.toLowerCase();

@@ -1,6 +1,6 @@
 <template>
   <div class="guesses-container">
-    Number of guesses remaining
+    Mistakes remaining
     <div
       v-for="n in numOfGuessesRemaining()"
       :key="n"
