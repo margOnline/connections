@@ -30,12 +30,13 @@ export default createStore({
         localStorage.setItem("gameInProgress", new Date().getDate().toString());
         commit("setCategories", { categories: categories.items });
         commit("setWords", { words: words.items });
-        localStorage.setItem(JSON.stringify("categories", state.categories));
-        localStorage.setItem(JSON.stringify);
+        localStorage.setItem("categories", JSON.stringify(state.categories));
+        localStorage.setItem("words", JSON.stringify(state.words));
         localStorage.setItem(
-          JSON.stringify("numOfGuessesRemaining", state.numOfGuessesRemaining)
+          "numOfGuessesRemaining",
+          JSON.stringify(state.numOfGuessesRemaining)
         );
-        localStorage.setItem(JSON.stringify("guesses", state.guesses));
+        localStorage.setItem("guesses", JSON.stringify(state.guesses));
       }
     },
     switchWordSelected({ commit, state }, { text }) {
@@ -68,7 +69,7 @@ export default createStore({
         "numOfGuessesRemaining",
         state.numOfGuessesRemaining
       );
-      localStorage.setItem(JSON.stringify("guesses", state.guesses));
+      localStorage.setItem("guesses", JSON.stringify(state.guesses));
     },
     isDuplicateGuess({ state }, { guessedWords }) {
       if (state.guesses.length === 0) return false;
@@ -87,7 +88,7 @@ export default createStore({
     },
     saveGuess({ commit, state }, { guessedWords }) {
       commit("setGuess", { guess: guessedWords });
-      localStorage.setItem(JSON.stringify("guesses", state.guesses));
+      localStorage.setItem("guesses", JSON.stringify(state.guesses));
     },
     toggleOneAway({ commit }, { value }) {
       commit("setOneAway", { value });
@@ -136,8 +137,8 @@ export default createStore({
   },
   modules: {},
   getters: {
-    numOfGuesses: (state) => {
-      return state.numOfGuessesRemaining;
+    numOfGuessesRemaining: (state) => {
+      return parseInt(state.numOfGuessesRemaining);
     },
     unsolvedWords: (state) => {
       return state.words.filter((word) => !word.solved);
