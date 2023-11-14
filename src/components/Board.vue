@@ -8,7 +8,7 @@
     >
       <i class="help-icon">?</i>
     </button>
-    <GameMessage></GameMessage>
+    <GameMessage :numOfGuessesRemaining="numOfGuessesRemaining"></GameMessage>
     <InstructionPanel />
     <AppNotifications />
     <SolvedCategory
@@ -131,7 +131,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["unsolvedWords", "categories"]),
+    ...mapGetters(["unsolvedWords", "categories", "numOfGuessesRemaining"]),
     wordsForGrid() {
       if (this.wordGridKey === this.prevWordGridKey) {
         return this.unsolvedWords;

@@ -5,6 +5,9 @@
 <script>
 export default {
   name: "GameMessage",
+  props: {
+    numOfGuessesRemaining: { type: Number, required: true },
+  },
   data() {
     return {
       gameOverMessages: {
@@ -15,20 +18,24 @@ export default {
         4: "Perfect",
       },
       inProgressMessage: "Create 4 groups of 4",
-      numOfGuessesRemaining: { type: Number },
     };
+  },
+  methods: {
+    gameOver() {
+      return (
+        parseInt(this.numOfGuessesRemaining === 0) ||
+        this.$store.state.categories.every((c) => c.solved)
+      );
+    },
   },
   computed: {
     message() {
-      if (this.$store.state.categories.every((c) => c.solved)) {
+      if (this.gameOver) {
         return this.gameOverMessages[this.numOfGuessesRemaining];
       } else {
         return this.inProgressMessage;
       }
     },
-  },
-  created() {
-    this.numOfGuessesRemaining = this.$store.state.numOfGuessesRemaining;
   },
 };
 </script>
