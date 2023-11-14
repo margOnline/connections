@@ -38,7 +38,7 @@ export default createStore({
         localStorage.setItem(JSON.stringify("guesses", state.guesses));
       }
     },
-    updateWordState({ commit, state }, { text }) {
+    switchWordSelected({ commit, state }, { text }) {
       const targetWord = state.words.find((w) => w.text === text);
       commit("toggleWordSelected", { word: targetWord });
     },
@@ -92,9 +92,6 @@ export default createStore({
     toggleOneAway({ commit }, { value }) {
       commit("setOneAway", { value });
     },
-    async fetchCategory({ state }, { id }) {
-      return state.categories.find((c) => c.id === id);
-    },
     unselectWord({ commit }, { word }) {
       commit("setWordUnselected", { word });
     },
@@ -144,6 +141,12 @@ export default createStore({
     },
     unsolvedWords: (state) => {
       return state.words.filter((word) => !word.solved);
+    },
+    guesses: (state) => {
+      return state.guesses.flat();
+    },
+    categories: (state) => {
+      return state.categories;
     },
   },
 });

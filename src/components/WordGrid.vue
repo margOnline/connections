@@ -6,8 +6,8 @@
       </li>
     </ul>
     <ul v-else>
-      <li v-for="(word, idx) in guessedWords" :key="word.text + idx">
-        <EmptyWordSquare :word="word" />
+      <li v-for="word in words" :key="word.text">
+        <EmptyWordSquare :word="word" :categories="categories" />
       </li>
     </ul>
   </div>
@@ -20,18 +20,15 @@ import EmptyWordSquare from "@/components/EmptyWordSquare";
 export default {
   props: {
     words: { type: Array, required: true },
-    categoryId: { type: Number, default: null },
+    categories: { type: Array, required: true },
   },
   components: { WordSquare, EmptyWordSquare },
   computed: {
     gameOver() {
       return (
-        this.$store.state.numOfGuessesRemaining === 0 ||
-        this.$store.state.categories.every((c) => c.solved)
+        parseInt(this.$store.state.numOfGuessesRemaining) === 0 ||
+        this.categories.every((c) => c.solved)
       );
-    },
-    guessedWords() {
-      return this.$store.state.guesses.flat();
     },
   },
 };

@@ -1,18 +1,20 @@
 <template>
   <div class="word-grid-container">
     <h1>Results Page</h1>
-    <WordGrid :words="words" />
+    <WordGrid :words="guessedWords" :categories="categories" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import WordGrid from "@/components/WordGrid";
 
 export default {
   components: { WordGrid },
   computed: {
-    words() {
-      return this.$store.state.guesses.flat();
+    ...mapGetters(["guesses", "categories"]),
+    guessedWords() {
+      return this.guesses.flat();
     },
   },
 };

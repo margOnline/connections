@@ -17,7 +17,12 @@
       :category="category"
     >
     </SolvedCategory>
-    <WordGrid :words="wordsForGrid" v-if="!gameOver" :key="wordGridKey" />
+    <WordGrid
+      :words="wordsForGrid"
+      :categories="categories"
+      v-if="!gameOver"
+      :key="wordGridKey"
+    />
     <div v-if="!gameOver" class="actions-container">
       <ActionButton @click="shuffleWords()" text="Shuffle" />
       <ActionButton @click="unselectWords()" text="Deselect All" />
@@ -127,7 +132,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["unsolvedWords"]),
+    ...mapGetters(["unsolvedWords", "categories"]),
     wordsForGrid() {
       if (this.wordGridKey === this.prevWordGridKey) {
         return this.unsolvedWords;
@@ -138,7 +143,7 @@ export default {
     gameOver() {
       return (
         this.$store.state.numOfGuessesRemaining === 0 ||
-        this.$store.state.categories.every((c) => c.solved)
+        this.categories.every((c) => c.solved)
       );
     },
   },

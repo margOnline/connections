@@ -12,7 +12,7 @@ export default {
   methods: {
     toggleSelected(event) {
       const clickedWord = event.target.innerText.toLowerCase();
-      this.$store.dispatch("updateWordState", { text: clickedWord });
+      this.$store.dispatch("switchWordSelected", { text: clickedWord });
     },
   },
 };
