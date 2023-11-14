@@ -70,7 +70,6 @@ export default {
   },
   props: {
     words: { type: Array, required: true },
-    categories: { type: Array, required: true },
   },
   methods: {
     handleSubmission: async function () {
