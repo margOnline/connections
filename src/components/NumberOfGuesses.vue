@@ -2,7 +2,7 @@
   <div class="guesses-container">
     Mistakes remaining
     <div
-      v-for="n in numOfGuessesRemaining()"
+      v-for="n in numOfGuessesRemaining"
       :key="n"
       class="filled circle"
     ></div>
@@ -11,15 +11,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "NumberOfGuesses",
   methods: {
-    numOfGuessesRemaining() {
-      return this.$store.state.numOfGuessesRemaining;
-    },
     numOfGuesses() {
-      return 4 - this.$store.state.numOfGuessesRemaining;
+      return 4 - this.numOfGuessesRemaining;
     },
+  },
+  computed: {
+    ...mapGetters(["numOfGuessesRemaining"]),
   },
 };
 </script>

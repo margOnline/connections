@@ -21,16 +21,17 @@ export default {
     };
   },
   methods: {
-    gameOver() {
+    isGameOver() {
       return (
-        parseInt(this.numOfGuessesRemaining === 0) ||
+        this.numOfGuessesRemaining === 0 ||
         this.$store.state.categories.every((c) => c.solved)
       );
     },
   },
   computed: {
     message() {
-      if (this.gameOver) {
+      const gameOver = this.isGameOver();
+      if (gameOver) {
         return this.gameOverMessages[this.numOfGuessesRemaining];
       } else {
         return this.inProgressMessage;
