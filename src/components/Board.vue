@@ -8,7 +8,7 @@
     >
       <i class="help-icon">?</i>
     </button>
-    <GameMessage></GameMessage>
+    <GameMessage :numOfGuessesRemaining="numOfGuessesRemaining"></GameMessage>
     <InstructionPanel />
     <AppNotifications />
     <SolvedCategory
@@ -17,6 +17,16 @@
       :category="category"
     >
     </SolvedCategory>
+
+    <div v-if="gameOver">
+      <SolvedCategory
+        v-for="category in unSolvedCategories()"
+        :key="category.id"
+        :category="category"
+      >
+      </SolvedCategory>
+    </div>
+
     <WordGrid
       :words="wordsForGrid"
       :categories="categories"
@@ -70,7 +80,6 @@ export default {
   },
   props: {
     words: { type: Array, required: true },
-    categories: { type: Array, required: true },
   },
   methods: {
     handleSubmission: async function () {
@@ -108,10 +117,16 @@ export default {
       return _.uniqBy(words, (w) => w.categoryId).length === 1;
     },
     solvedCategories() {
-      const categories = this.$store.state.categories;
+      const categories = this.categories;
       return categories
         .filter((c) => c.solved)
         .sort((a, b) => a.guessedOrder - b.guessedOrder);
+    },
+    unSolvedCategories() {
+      const categories = this.categories;
+      return categories
+        .filter((c) => !c.solved)
+        .sort((a, b) => a.level - b.level);
     },
     addNotification({ message }) {
       useNotifications().addNotification({ message, timeout: 4000 });
@@ -132,7 +147,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["unsolvedWords", "categories"]),
+    ...mapGetters(["unsolvedWords", "categories", "numOfGuessesRemaining"]),
     wordsForGrid() {
       if (this.wordGridKey === this.prevWordGridKey) {
         return this.unsolvedWords;
@@ -142,7 +157,7 @@ export default {
     },
     gameOver() {
       return (
-        this.$store.state.numOfGuessesRemaining === 0 ||
+        this.numOfGuessesRemaining === 0 ||
         this.categories.every((c) => c.solved)
       );
     },

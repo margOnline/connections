@@ -1,6 +1,5 @@
 <template>
-  <div v-if="!word.solved" class="empty-square unsolved"></div>
-  <div v-else class="empty-square" :class="solvedCategoryLevel"></div>
+  <div class="empty-square" :class="categoryLevel"></div>
 </template>
 
 <script>
@@ -10,7 +9,7 @@ export default {
     categories: { type: Array, required: true },
   },
   computed: {
-    solvedCategoryLevel() {
+    categoryLevel() {
       const category = this.categories.find(
         (c) => c.id === this.word.categoryId
       );

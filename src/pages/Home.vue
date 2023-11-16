@@ -1,5 +1,5 @@
 <template>
-  <Board :categories="categories" :words="words" />
+  <Board :words="words" />
 </template>
 
 <script>
@@ -12,9 +12,6 @@ export default {
   computed: {
     words() {
       return this.$store.state.words;
-    },
-    categories() {
-      return this.$store.state.categories;
     },
   },
 };
