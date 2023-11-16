@@ -34,7 +34,7 @@ export default createStore({
         localStorage.setItem("words", JSON.stringify(state.words));
         localStorage.setItem(
           "numOfGuessesRemaining",
-          JSON.stringify(state.numOfGuessesRemaining)
+          state.numOfGuessesRemaining
         );
         localStorage.setItem("guesses", JSON.stringify(state.guesses));
       }
