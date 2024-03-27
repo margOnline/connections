@@ -33,13 +33,13 @@
       v-if="!gameOver"
       :key="wordGridKey"
     />
+    <NumberOfGuesses v-if="!gameOver" />
     <div v-if="!gameOver" class="actions-container">
       <ActionButton @click="shuffleWords()" text="Shuffle" />
       <ActionButton @click="unselectWords()" text="Deselect All" />
       <SubmitButton @submit="handleSubmission" />
     </div>
     <ViewResultButton v-else @view="viewResult" />
-    <NumberOfGuesses v-if="!gameOver" />
   </div>
 </template>
 
