@@ -142,9 +142,8 @@ export default {
     left: 1%;
   }
   #help-arrow {
-    height: 3.2rem;
+    height: 44px;
     left: 3.2rem;
-    bottom: 0rem;
     position: absolute;
   }
 }
