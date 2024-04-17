@@ -179,6 +179,9 @@ ul {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+.actions-container {
+  margin: auto;
+}
 .actions-container > a,
 .actions-container > button {
   margin: 5px;
