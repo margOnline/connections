@@ -12,7 +12,7 @@ export default {
 
 <style>
 .container {
-  width: 45%;
+  width: 90%;
   margin: auto;
 }
 .easy {
