@@ -3,28 +3,28 @@
     {
       "id": 1,
       "level": "Easy",
-      "name": "Shades of purple",
+      "name": "Metal Elements",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 2,
       "level": "Moderate",
-      "name": "Characters in the Harry Potter books",
+      "name": "Mattress Sizes",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 3,
       "level": "Challenging",
-      "name": "Slang words for drugs",
+      "name": "Slang for toilet",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 4,
       "level": "Hard",
-      "name": "Characters in Roald Dahl books",
+      "name": "Kinds of Knives",
       "solved": false,
       "guessedOrder": 0
     }
