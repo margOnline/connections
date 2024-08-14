@@ -3,28 +3,28 @@
     {
       "id": 1,
       "level": "Easy",
-      "name": "Metal Elements",
+      "name": "Stated",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 2,
       "level": "Moderate",
-      "name": "Mattress Sizes",
+      "name": "Nickname",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 3,
       "level": "Challenging",
-      "name": "Slang for toilet",
+      "name": "Obvious",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 4,
       "level": "Hard",
-      "name": "Kinds of Knives",
+      "name": "__House",
       "solved": false,
       "guessedOrder": 0
     }

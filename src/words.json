@@ -1,98 +1,98 @@
 {
   "items": [
     {
-      "text": "gold",
+      "text": "said",
       "categoryId": 1,
       "selected": false,
       "solved": false
     },
     {
-      "text": "lead",
+      "text": "told",
       "categoryId": 1,
       "selected": false,
       "solved": false
     },
     {
-      "text": "mercury",
+      "text": "voiced",
       "categoryId": 1,
       "selected": false,
       "solved": false
     },
     {
-      "text": "tin",
+      "text": "spoke",
       "categoryId": 1,
       "selected": false,
       "solved": false
     },
     {
-      "text": "full",
+      "text": "handle",
       "categoryId": 2,
       "selected": false,
       "solved": false
     },
     {
-      "text": "king",
+      "text": "designation",
       "categoryId": 2,
       "selected": false,
       "solved": false
     },
     {
-      "text": "queen",
+      "text": "moniker",
       "categoryId": 2,
       "selected": false,
       "solved": false
     },
     {
-      "text": "twin",
+      "text": "sobriquet",
       "categoryId": 2,
       "selected": false,
       "solved": false
     },
     {
-      "text": "bowie",
+      "text": "porter",
       "categoryId": 4,
       "selected": false,
       "solved": false
     },
     {
-      "text": "butcher",
+      "text": "power",
       "categoryId": 4,
       "selected": false,
       "solved": false
     },
     {
-      "text": "butterfly",
+      "text": "rough",
       "categoryId": 4,
       "selected": false,
       "solved": false
     },
     {
-      "text": "butter",
+      "text": "wheel",
       "categoryId": 4,
       "selected": false,
       "solved": false
     },
     
     {
-      "text": "can",
+      "text": "clear",
       "categoryId": 3,
       "selected": false,
       "solved": false
     },
     {
-      "text": "throne",
+      "text": "marked",
       "categoryId": 3,
       "selected": false,
       "solved": false
     },
     {
-      "text": "john",
+      "text": "striking",
       "categoryId": 3,
       "selected": false,
       "solved": false
     },
     {
-      "text": "head",
+      "text": "pronounced",
       "categoryId": 3,
       "selected": false,
       "solved": false
