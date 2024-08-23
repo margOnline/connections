@@ -23,16 +23,17 @@ export default {
 .word {
   display: inline-block;
   font-family: "Poppins";
-  font-size: 20px;
-  font-weight: bold;
-  height: 80px;
-  width: 150px;
+  font-size: 16px;
+  font-weight: 700;
+  height: 60px;
+  width: 60px;
   background-color: #efefe6;
   padding: 10px;
   text-align: center;
   border-radius: 6px;
   line-height: 80px;
-  vertical-align: center;
+  justify-content: center;
+  align-content: center;
 }
 .word a {
   color: black;
