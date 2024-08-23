@@ -27,11 +27,10 @@ export default {
 
 <style scoped>
 .guesses-container {
-  margin-top: 20px;
   margin: 20px auto;
   display: grid;
   grid-template-columns: 8fr 1fr 1fr 1fr 1fr;
-  width: 40%;
+  width: 80%;
 }
 .circle {
   height: 18px;
