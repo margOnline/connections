@@ -3,28 +3,28 @@
     {
       "id": 1,
       "level": "Easy",
-      "name": "Stated",
+      "name": "Cover with a thick layer",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 2,
       "level": "Moderate",
-      "name": "Nickname",
+      "name": "Things that are inflated",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 3,
       "level": "Challenging",
-      "name": "Obvious",
+      "name": "Kinds of charts",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 4,
       "level": "Hard",
-      "name": "__House",
+      "name": "Classic cocktail types",
       "solved": false,
       "guessedOrder": 0
     }
