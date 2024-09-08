@@ -3,29 +3,28 @@
     {
       "id": 1,
       "level": "Easy",
-      "name": "Newspaper sections",
+      "name": "Ways to transform an images",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 2,
       "level": "Moderate",
-      "name": "Tree features",
+      "name": "Things used in golf",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 3,
       "level": "Challenging",
-      "name": "Kinds of salad",
+      "name": "Aquarium purchases",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 4,
       "level": "Hard",
-      "name": "Seen on backs of US coins",
-      "solved": false,
+      "name": "Logos with horses",
       "guessedOrder": 0
     }
   ]
