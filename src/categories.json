@@ -3,28 +3,27 @@
     {
       "id": 1,
       "level": "Easy",
-      "name": "Commit to paper",
+      "name": "Jenry's parents",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 2,
       "level": "Moderate",
-      "name": "Needs for playing Yahtzee",
+      "name": "Jenry's meaningful places",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 3,
       "level": "Challenging",
-      "name": "Heroes of action movie franchises",
-      "solved": false,
+      "name": "Jenry's brothers",
       "guessedOrder": 0
     },
     {
       "id": 4,
       "level": "Hard",
-      "name": "__Stick",
+      "name": "Jenry's nieces and nephews",
       "guessedOrder": 0
     }
   ]
