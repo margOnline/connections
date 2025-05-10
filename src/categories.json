@@ -3,28 +3,28 @@
     {
       "id": 1,
       "level": "Easy",
-      "name": "Ways to transform an images",
+      "name": "Commit to paper",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 2,
       "level": "Moderate",
-      "name": "Things used in golf",
+      "name": "Needs for playing Yahtzee",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 3,
       "level": "Challenging",
-      "name": "Aquarium purchases",
+      "name": "Heroes of action movie franchises",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 4,
       "level": "Hard",
-      "name": "Logos with horses",
+      "name": "__Stick",
       "guessedOrder": 0
     }
   ]
