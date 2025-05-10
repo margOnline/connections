@@ -12,32 +12,16 @@ export default createStore({
   },
   actions: {
     initializeGame({ commit, state }) {
-      if (
-        localStorage.getItem("gameInProgress") ===
-        new Date().getDate().toString()
-      ) {
-        const categories = localStorage.getItem("categories");
-        const words = localStorage.getItem("words");
-        const numOfGuessesRemaining = localStorage.getItem(
-          "numOfGuessesRemaining"
-        );
-        const guesses = localStorage.getItem("guesses");
-        commit("setCategories", { categories: JSON.parse(categories) });
-        commit("setWords", { words: JSON.parse(words) });
-        commit("setNumOfGuessesRemaining", { numOfGuessesRemaining });
-        commit("setGuesses", { guesses: JSON.parse(guesses) });
-      } else {
-        localStorage.setItem("gameInProgress", new Date().getDate().toString());
-        commit("setCategories", { categories: categories.items });
-        commit("setWords", { words: words.items });
-        localStorage.setItem("categories", JSON.stringify(state.categories));
-        localStorage.setItem("words", JSON.stringify(state.words));
-        localStorage.setItem(
-          "numOfGuessesRemaining",
-          state.numOfGuessesRemaining
-        );
-        localStorage.setItem("guesses", JSON.stringify(state.guesses));
-      }
+      localStorage.setItem("gameInProgress", new Date().getDate().toString());
+      commit("setCategories", { categories: categories.items });
+      commit("setWords", { words: words.items });
+      localStorage.setItem("categories", JSON.stringify(state.categories));
+      localStorage.setItem("words", JSON.stringify(state.words));
+      localStorage.setItem(
+        "numOfGuessesRemaining",
+        state.numOfGuessesRemaining
+      );
+      localStorage.setItem("guesses", JSON.stringify(state.guesses));
     },
     switchWordSelected({ commit, state }, { text }) {
       const targetWord = state.words.find((w) => w.text === text);
