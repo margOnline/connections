@@ -21,17 +21,16 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Oxygen&family=Oxygen+Mono&family=Poppins&display=swap");
 .word {
+  font-size: 2cqw;
+  font-weight: 700;
   display: inline-block;
   font-family: "Poppins";
-  font-size: 16px;
-  font-weight: 700;
   height: 60px;
   width: 60px;
   background-color: #efefe6;
   padding: 10px;
   text-align: center;
   border-radius: 6px;
-  line-height: 80px;
   justify-content: center;
   align-content: center;
 }
@@ -45,14 +44,8 @@ export default {
 }
 @media (min-width: 721px) and (max-width: 1024px) {
   .word {
-    font-size: 2vw;
     height: 80px;
     width: 80px;
-  }
-}
-@media (min-width: 240px) and (max-width: 720px) {
-  .word {
-    font-size: 3vw;
   }
 }
 .shake {
