@@ -1,10 +1,16 @@
 <template>
-  <a class="word" :class="{ selected: word.selected }" @click="toggleSelected">
+  <a
+    class="word"
+    :class="{ selected: word.selected, small_font: isLong(word) }"
+    @click="toggleSelected"
+  >
     {{ word.text.toUpperCase() }}
   </a>
 </template>
 
 <script>
+import { isProxy, toRaw } from "vue";
+
 export default {
   props: {
     word: { type: Object, required: true },
@@ -14,6 +20,14 @@ export default {
       const clickedWord = event.target.innerText.toLowerCase();
       this.$store.dispatch("switchWordSelected", { text: clickedWord });
     },
+    isLong(word) {
+      let rawWord;
+
+      if (isProxy(word)) {
+        rawWord = toRaw(word);
+      }
+      return rawWord.text.split(" ").some((w) => w.length > 7);
+    },
   },
 };
 </script>
@@ -21,7 +35,7 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Oxygen&family=Oxygen+Mono&family=Poppins&display=swap");
 .word {
-  font-size: 2cqw;
+  font-size: 4cqw;
   font-weight: 700;
   display: inline-block;
   font-family: "Poppins";
@@ -36,6 +50,9 @@ export default {
 }
 .word a {
   color: black;
+}
+.small_font {
+  font-size: 3cqw;
 }
 .selected {
   background-color: #5a594e;
