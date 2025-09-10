@@ -6,8 +6,8 @@
 
 <script>
 export default {
-  name: "App",
-};
+  name: 'App',
+}
 </script>
 
 <style>
@@ -27,14 +27,15 @@ export default {
 .hard {
   background-color: #ba81c5;
 }
-@media (min-width: 768px) and (max-width: 1060px) {
-  .container {
-    width: 60%;
-  }
-}
-@media (min-width: 240px) and (max-width: 720px) {
+@media (min-width: 240px) {
   .container {
     width: 100%;
+  }
+}
+@media (min-width: 480px) {
+  .container {
+    width: 380px;
+    max-width: 380px;
   }
 }
 </style>
