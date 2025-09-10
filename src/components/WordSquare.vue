@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { isProxy, toRaw } from "vue";
+import { isProxy, toRaw } from 'vue'
 
 export default {
   props: {
@@ -17,28 +17,28 @@ export default {
   },
   methods: {
     toggleSelected(event) {
-      const clickedWord = event.target.innerText.toLowerCase();
-      this.$store.dispatch("switchWordSelected", { text: clickedWord });
+      const clickedWord = event.target.innerText.toLowerCase()
+      this.$store.dispatch('switchWordSelected', { text: clickedWord })
     },
     isLong(word) {
-      let rawWord;
+      let rawWord
 
       if (isProxy(word)) {
-        rawWord = toRaw(word);
+        rawWord = toRaw(word)
       }
-      return rawWord.text.split(" ").some((w) => w.length > 7);
+      return rawWord.text.split(' ').some((w) => w.length > 7)
     },
   },
-};
+}
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Oxygen&family=Oxygen+Mono&family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Oxygen&family=Oxygen+Mono&family=Poppins&display=swap');
 .word {
-  font-size: 4cqw;
+  font-size: 1rem;
   font-weight: 700;
   display: inline-block;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   height: 60px;
   width: 60px;
   background-color: #efefe6;
@@ -52,7 +52,7 @@ export default {
   color: black;
 }
 .small_font {
-  font-size: 3cqw;
+  font-size: 1rem;
 }
 .selected {
   background-color: #5a594e;
