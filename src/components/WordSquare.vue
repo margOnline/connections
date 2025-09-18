@@ -52,7 +52,7 @@ export default {
   color: black;
 }
 .small_font {
-  font-size: 1rem;
+  font-size: 0.675rem;
 }
 .selected {
   background-color: #5a594e;
