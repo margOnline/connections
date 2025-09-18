@@ -3,27 +3,27 @@
     {
       "id": 1,
       "level": "Easy",
-      "name": "Shoe parts",
+      "name": "Trails",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 2,
       "level": "Moderate",
-      "name": "Board games",
+      "name": "What Henry Loves",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 3,
       "level": "Challenging",
-      "name": "Fictional spies",
+      "name": "What Jen Loves",
       "guessedOrder": 0
     },
     {
       "id": 4,
       "level": "Hard",
-      "name": "Rubber __",
+      "name": "Jenry's parents names",
       "guessedOrder": 0
     }
   ]
