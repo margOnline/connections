@@ -1,6 +1,12 @@
 <template>
   <div class="word-grid-container">
-    <ConfettiExplosion v-if="gameWon" :colors="confettiColors" :force="0.8" />
+    <ConfettiExplosion
+      v-if="gameWon"
+      :colors="confettiColors"
+      :force="0.8"
+      :particleCount="200"
+      :particleSize="16"
+    />
 
     <button
       @click="showInstructions"
