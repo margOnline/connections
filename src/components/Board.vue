@@ -1,6 +1,6 @@
 <template>
   <div class="word-grid-container">
-    <ConfettiExplosion v-if="gameWon" />
+    <ConfettiExplosion v-if="gameWon" :colors="confettiColors" />
 
     <button
       @click="showInstructions"
@@ -80,6 +80,7 @@ export default {
     return {
       wordGridKey: Math.random(),
       prevWordGridKey: null,
+      confettiColors: ["#ff718d", "#a864fd", "#fdff6a", "#78ff44"],
     };
   },
   props: {
