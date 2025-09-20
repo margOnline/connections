@@ -1,5 +1,7 @@
 <template>
   <div class="word-grid-container">
+    <ConfettiExplosion v-if="gameWon" />
+
     <button
       @click="showInstructions"
       id="help-button"
@@ -45,6 +47,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import ConfettiExplosion from "vue-confetti-explosion";
 import WordGrid from "@/components/WordGrid";
 import SubmitButton from "@/components/SubmitButton";
 import ActionButton from "@/components/ActionButton";
@@ -71,6 +74,7 @@ export default {
     NumberOfGuesses,
     AppNotifications,
     InstructionPanel,
+    ConfettiExplosion,
   },
   data() {
     return {
@@ -160,6 +164,9 @@ export default {
         this.numOfGuessesRemaining === 0 ||
         this.categories.every((c) => c.solved)
       );
+    },
+    gameWon() {
+      return this.categories.every((c) => c.solved);
     },
   },
 };
