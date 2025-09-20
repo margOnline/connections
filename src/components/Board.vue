@@ -1,6 +1,6 @@
 <template>
   <div class="word-grid-container">
-    <ConfettiExplosion v-if="gameWon" :colors="confettiColors" />
+    <ConfettiExplosion v-if="gameWon" :colors="confettiColors" :force="0.8" />
 
     <button
       @click="showInstructions"
@@ -10,6 +10,12 @@
     >
       <i class="help-icon">?</i>
     </button>
+    <div class="heading">
+      <span>🥂</span>
+      <h1>Jenry's Wedding Connections</h1>
+      <span>🥂</span>
+    </div>
+
     <GameMessage :numOfGuessesRemaining="numOfGuessesRemaining"></GameMessage>
     <InstructionPanel />
     <AppNotifications />
@@ -178,6 +184,9 @@ h1,
 h2 {
   font-weight: normal;
 }
+h1 {
+  text-align: center;
+}
 a {
   color: #42b983;
 }
@@ -186,6 +195,20 @@ ul {
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.heading {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-inline: 1rem;
+}
+.heading h1 {
+  margin-block: 0;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+}
+.heading > span {
+  font-size: 2rem;
 }
 .actions-container {
   margin: auto;
