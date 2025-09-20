@@ -17,7 +17,7 @@ export default {
     categoryWords() {
       const words = this.$store.state.words
         .filter((w) => w.categoryId === this.category.id)
-        .map((w) => w.text[0].toUpperCase() + w.text.slice(1));
+        .map((w) => w.text.toUpperCase());
       return words.join(", ");
     },
   },

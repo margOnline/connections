@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ message }}!</h1>
+  <h2>{{ message }}!</h2>
 </template>
 
 <script>
@@ -42,7 +42,8 @@ export default {
 </script>
 
 <style scoped>
-h1 {
+h2 {
   text-align: center;
+  font-size: 1rem;
 }
 </style>

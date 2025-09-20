@@ -11,20 +11,20 @@
     {
       "id": 2,
       "level": "Moderate",
-      "name": "What Henry Loves",
+      "name": "What Henry loves",
       "solved": false,
       "guessedOrder": 0
     },
     {
       "id": 3,
       "level": "Challenging",
-      "name": "What Jen Loves",
+      "name": "What Jen loves",
       "guessedOrder": 0
     },
     {
       "id": 4,
       "level": "Hard",
-      "name": "Jenry's parents names",
+      "name": "Jenry's parents",
       "guessedOrder": 0
     }
   ]
